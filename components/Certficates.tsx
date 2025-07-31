@@ -65,7 +65,7 @@ export default function Certificates() {
                   {item.title}
                 </a>
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-justify">
                 {item.description}
               </p>
             </div>

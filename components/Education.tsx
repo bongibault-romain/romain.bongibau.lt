@@ -20,26 +20,27 @@ export default function Education() {
       link: "https://www.insa-toulouse.fr/formation/ingenieur-specialite-informatique-et-reseaux/",
       icon: <INSA />,
       date: "2023 - 2026",
-      location: "Institut National des Sciences Appliquées, 31400 Toulouse",
+      location: "Institut National des Sciences Appliquées, 31400 Toulouse, France",
       description:
-        "Acquisition de compétences approfondies en mathématiques, en optimisation, en réseaux et en algorithmique.",
+      "Formation axée sur le développement logiciel, les réseaux, l'algorithmique et la cybersécurité. J'y ai renforcé mes compétences en programmation, en mathématiques appliquées et en gestion de projets techniques."
     },
     {
       title: "Classe Préparatoire Aux Grandes Ecoles",
       link: "https://www.faidherbe.org/",
       icon: <Faidherbe />,
       date: "2021 - 2023",
-      location: "Lycée Faidherbe, 59034 Lille",
-      description: "Filière Mathématiques, Physique et Informatique (MPI), développant mes compétences analytiques et techniques dans ces domaines."
+      location: "Lycée Faidherbe, 59034 Lille, France",
+      description: 
+      "Deux années intenses où j'ai consolidé mes bases scientifiques tout en développant une solide méthode de travail. Cette formation m'a permis de progresser en logique, en modélisation et en informatique."
     },
     {
       title: "Baccalauréat Général",
       link: "https://www.ispfourmies.com/",
       icon: <ISP />,
       date: "2018 - 2021",
-      location: "Institution Saint Pierre, 59610 Fourmies",
+      location: "Institution Saint Pierre, 59610 Fourmies, France",
       description:
-      "Obtention avec mention Bien, spécialisé en mathématiques, physique et SVT avec option mathématiques expertes."
+      "Spécialités : Mathématiques, Physique-Chimie, SVT - Option Mathématiques expertes. Ce parcours a confirmé mon intérêt pour les sciences et préparé le terrain pour mes études d'ingénieur."
     },
   ];
 
@@ -76,7 +77,7 @@ export default function Education() {
                     {item.location}
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-400 text-justify">
                   {item.description}
                 </p>
               </div>
