@@ -25,7 +25,7 @@ export async function generateMetadata({
     description: metadata?.description,
     keywords: metadata?.keywords || [],
     openGraph: {
-      title: metadata?.title,
+      title: metadata?.title + ' - Bongibault Romain - Portfolio',
       description: metadata?.description,
       url: `/projects/${slug}`,
       images: metadata?.thumbnail ? [{ url: metadata.thumbnail }] : [],
