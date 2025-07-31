@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Experience />
-      <Recommendations />
+      {/* <Recommendations /> */}
       <Projects />
       <Education />
       <Certificates />
