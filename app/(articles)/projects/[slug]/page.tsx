@@ -1,21 +1,25 @@
-import fs from 'fs/promises';
-import { Metadata } from 'next';
+import fs from "fs/promises";
+import { Metadata } from "next";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const { default: Post } = await import(`@/content/projects/${slug}.mdx`)
- 
-  return <Post />
+  const { slug } = await params;
+  const { default: Post } = await import(`@/content/projects/${slug}.mdx`);
+
+  return <Post />;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { slug } = await params;
   const { metadata } = await import(`@/content/projects/${slug}.mdx`);
-  
+
   return {
     title: metadata?.title,
     description: metadata?.description,
@@ -25,19 +29,26 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: metadata?.description,
       url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${slug}`,
       images: metadata?.thumbnail ? [{ url: metadata.thumbnail }] : [],
-      type: 'article',
+      type: "article",
     },
     authors: metadata?.authors || [],
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      noimageindex: false,
+      noarchive: true,
+    },
   };
 }
- 
+
 export async function generateStaticParams() {
-  const files = await fs.readdir('content/projects');
+  const files = await fs.readdir("content/projects");
   const slugs = files
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => ({ slug: file.replace('.mdx', '') }));
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => ({ slug: file.replace(".mdx", "") }));
 
   return slugs;
 }
- 
-export const dynamicParams = false
+
+export const dynamicParams = false;
