@@ -19,7 +19,7 @@ export const metadata = {
       name: 'Romain Bongibault',
       url: 'https://romain.bongibau.lt',
     },
-  ],  
+  ],
 }
 
 ![Image](https://adymrxvmro.cloudimg.io/v7/https://sherpas.com/content/uploads/2022/07/photo-8_0.jpg)
@@ -63,13 +63,13 @@ Les jeux de données utilisés :
 
 Les résultats, malgré quelques améliorations de loss, sont restés très éloignés de nos attentes. Le modèle n'a pas appris correctement la syntaxe, ni su produire des phrases logiques.
 
-| Name         | Training Device              | Language | Dataset              | Final Loss | Context Size | Batch Size | Duration   |
+| Nom          | Appareil d'entraînement         | Langue   | Jeu de données         | Perte finale | Taille contexte | Batch size | Durée     |
 |--------------|------------------------------|----------|-----------------------|------------|---------------|-------------|------------|
-| Scratch-v0.0 | Intel Core i7-8700           | English  | Shakespeare (2 MB)    | 1.1268     | 192           | 32          | 03:24:00   |
-| Scratch-v0.1 | Intel Core i7-8700           | English  | Shakespeare (2 MB)    | 0.8046     | 192           | 32          | 06:11:00   |
-| Scratch-v1.0 | 2&times;GPU NVIDIA RTX A4500      | English  | Shakespeare (2 MB)    | 0.9041     | 512           | 32          | 00:28:00   |
-| Scratch-v2.0 | 2&times;GPU NVIDIA RTX A4500      | French   | Wikipedia (10 GB)     | 1.0603     | 512           | 32          | 00:27:00   |
-| Scratch-v2.3 | 2&times;GPU NVIDIA RTX A4500      | French   | Wikipedia (10 GB)     | 0.6484     | 512           | 48          | 03:31:00   |
+| Scratch-v0.0 | Intel Core i7-8700           | Anglais  | Shakespeare (2 MB)    | 1.1268     | 192           | 32          | 03:24:00   |
+| Scratch-v0.1 | Intel Core i7-8700           | Anglais  | Shakespeare (2 MB)    | 0.8046     | 192           | 32          | 06:11:00   |
+| Scratch-v1.0 | 2&times;GPU NVIDIA RTX A4500      | Anglais  | Shakespeare (2 MB)    | 0.9041     | 512           | 32          | 00:28:00   |
+| Scratch-v2.0 | 2&times;GPU NVIDIA RTX A4500      | Français   | Wikipedia (10 GB)     | 1.0603     | 512           | 32          | 00:27:00   |
+| Scratch-v2.3 | 2&times;GPU NVIDIA RTX A4500      | Français   | Wikipedia (10 GB)     | 0.6484     | 512           | 48          | 03:31:00   |
 
 
 La limite principale était matérielle : une seule carte GPU RTX A4500 ne suffit pas pour un entraînement profond. Pour des résultats comparables à GPT-2, il aurait fallu des semaines d'entraînement sur infrastructure distribuée.
@@ -150,4 +150,4 @@ Ces pistes ouvrent la voie vers un assistant scolaire puissant et agile.
 
 Merci à **Philippe Leleux, Eric Alata** et **Céline Peyraube** pour leur accompagnement. Ce projet a été conduit avec sérieux, et aucun outil d'IA générative n'a été utilisé pour la recherche ou l'analyse. Uniquement pour améliorer la clarté du texte.
 
-[Building a Chatbot for Student Guidance](/attachments/building-a-chatbot-for-student-guidance.pdf)
+L'article complet avec tous les détails techniques et résultats est disponible en téléchargement : [Building a Chatbot for Student Guidance](/attachments/building-a-chatbot-for-student-guidance.pdf).

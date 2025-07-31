@@ -18,18 +18,18 @@ export default function Certificates() {
       " Formation complète au développement web (HTML, CSS, JavaScript, PHP, MySQL, WordPress…) avec réalisation de projets concrets : site vitrine, blog, jeu, e-commerce, etc."
     },
     {
+      title: "Certification TOEIC® - 885 / 990",
+      link: "https://www.etsglobal.org/fr/en/digital-score-report/7ED332706994A01B08CF92F743173D057AAEF9E1DD1DEFE929C195A1A74D1F15Y2Ric3FWNU9UbytCWlo2VW1sQzZjZlJKelBFdzk2V092YjBUdFNoWXpQcjdCVHM5",
+      icon: <TOEIC />,
+      description: "Test Listening & Reading (INSA Toulouse, 2025) - Listening : 470 / Reading : 415 - Niveau avancé, score valide jusqu'en mai 2027."
+    },
+    {
       title: "Formation Développeur Java",
       link: "https://www.udemy.com/certificate/UC-d5545f09-c9e6-4682-9ec3-cbd8861be0ea/",
       icon: <Udemy />,
       description:
       "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
     },
-    {
-      title: "Certification TOEIC® - 885 / 990",
-      link: "https://www.etsglobal.org/fr/en/digital-score-report/7ED332706994A01B08CF92F743173D057AAEF9E1DD1DEFE929C195A1A74D1F15Y2Ric3FWNU9UbytCWlo2VW1sQzZjZlJKelBFdzk2V092YjBUdFNoWXpQcjdCVHM5",
-      icon: <TOEIC />,
-      description: "Test Listening & Reading (INSA Toulouse, 2025) - Listening : 470 / Reading : 415 - Niveau avancé, score valide jusqu'en mai 2027."
-    }
   ];
 
   return (
