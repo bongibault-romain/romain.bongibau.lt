@@ -25,7 +25,7 @@ export default function Experience() {
     },
     {
       title: "Stagiaire Ingénieur Réseau",
-      link: "#0",
+      link: "https://www.gerresheimer.com/en/company/locations/momignies-belgium",
       icon: <Gerresheimer />,
       date: "Juillet 2024 - Août 2024",
       location: "Gerresheimer, 6590 Momignies, Belgique",
