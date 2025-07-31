@@ -12,7 +12,6 @@ export default async function Page({
   return <Post />
 }
 
-// generate page title
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = await params;
   const { metadata } = await import(`@/content/projects/${slug}.mdx`);
@@ -24,8 +23,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: metadata?.title,
       description: metadata?.description,
-      url: `https://yourdomain.com/projects/${slug}`,
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${slug}`,
+      images: metadata?.thumbnail ? [{ url: metadata.thumbnail }] : [],
+      type: 'article',
     },
+    authors: metadata?.authors || [],
   };
 }
  

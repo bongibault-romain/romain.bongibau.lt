@@ -39,7 +39,7 @@ const components: MDXComponents = {
     </h6>
   ),
   p: ({ children }) => (
-    <p className="text-gray-600 dark:text-gray-400 mb-4 text-justify">
+    <p className="text-gray-600 dark:text-gray-400 mb-4 text-justify mt-0">
       {children}
     </p>
   ),
@@ -96,9 +96,11 @@ const components: MDXComponents = {
     </ol>
   ),
   table: ({ children }) => (
-    <table className="border-collapse w-full text-left text-sm text-gray-500 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
-      {children}
-    </table>
+    <div className="overflow-x-auto mb-4">
+      <table className="border-collapse w-full max-w-full overflow-hidden text-left text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 rounded-xl mb-0 mt-0">
+        {children}
+      </table>
+    </div>
   ),
   thead: ({ children }) => (
     <thead className="bg-gray-100 dark:bg-gray-700">{children}</thead>
@@ -121,14 +123,8 @@ const components: MDXComponents = {
   hr: () => (
     <hr className="border-gray-200 dark:border-gray-700 mt-4 mb-4 block" />
   ),
-  img: (props: ImageProps) => (
-    <div className="relative w-full aspect-video mb-4 ">
-      <Image
-        {...props}
-        fill
-        className="h-auto rounded-xl object-cover shadow-lg m-0!"
-      />
-    </div>
+  img: ({ ...props }) => (
+    <img {...props} className="h-auto rounded-xl object-cover m-0!" />
   ),
 } satisfies MDXComponents;
 

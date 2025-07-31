@@ -1,20 +1,20 @@
-import Image from "next/image";
-import Thumbnail01 from "@/public/images/tutorial-01.jpg";
-import Thumbnail02 from "@/public/images/tutorial-02.jpg";
+import fs from 'fs/promises'
 
-export default function Projects() {
-  const items = [
-    {
-      title: "Learn Programming in 2024",
-      link: "#0",
-      image: Thumbnail01,
-    },
-    {
-      title: "Learn Next.js in 20min",
-      link: "#0",
-      image: Thumbnail02,
-    },
-  ];
+import Image from "next/image";
+import Link from 'next/link';
+
+export default async function Projects() {
+  const files = await fs.readdir("content/projects");
+  const items = files.filter(file => file.endsWith('.mdx')).map((file) => {
+    const slug = file.replace('.mdx', '');
+    const { metadata } = require(`@/content/projects/${slug}.mdx`);
+    
+    return {
+      title: metadata.title,
+      image: metadata.thumbnail || 'https://picsum.photos/200/300',
+      link: `/projects/${slug}`,
+    };
+  });
 
   return (
     <section>
@@ -38,9 +38,9 @@ export default function Projects() {
             </figure>
             <div className="relative flex flex-col justify-end h-full w-full px-6 py-5">
               <h3 className="text-sm font-medium text-white">
-                <a className="before:absolute before:inset-0" href={item.link}>
+                <Link className="before:absolute before:inset-0" href={item.link}>
                   {item.title}
-                </a>
+                </Link>
               </h3>
             </div>
           </article>

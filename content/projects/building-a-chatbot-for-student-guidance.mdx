@@ -1,6 +1,25 @@
 export const metadata = {
   title: "Développement d'un Chatbot Institutionnel à l'Ère de l'IA Générative ",
-  author: "John Doe"
+  thumbnail: 'https://adymrxvmro.cloudimg.io/v7/https://sherpas.com/content/uploads/2022/07/photo-8_0.jpg',
+  description: "Découvrez comment nous avons développé un chatbot pour l'INSA Toulouse, alliant IA générative et recherche sémantique pour améliorer l'expérience étudiante.",
+  date: '31-07-2025',
+  keywords: [
+    'chatbot',
+    'IA générative',
+    'RAG',
+    'INSA Toulouse',
+    'étudiants',
+    'recherche sémantique',
+    'Mixtral-8x7B',
+    'Streamlit',
+    'FAISS',
+  ],
+  authors: [
+    {
+      name: 'Romain Bongibault',
+      url: 'https://romain.bongibau.lt',
+    },
+  ],  
 }
 
 ![Image](https://adymrxvmro.cloudimg.io/v7/https://sherpas.com/content/uploads/2022/07/photo-8_0.jpg)
@@ -10,8 +29,6 @@ export const metadata = {
 L'essor de l'intelligence artificielle dans l'éducation ouvre la voie à de nouveaux modes d'interaction entre étudiants et institutions. Au cœur de cette dynamique, les chatbots apparaissent comme une solution prometteuse pour répondre aux questions fréquentes, orienter les nouveaux arrivants et soulager les services administratifs. Mais ces outils doivent aussi composer avec un environnement instable, où l'information évolue sans cesse.
 
 À l'INSA Toulouse, nous avons entrepris la création d'un chatbot institutionnel capable de faire face à ces défis. Après avoir testé différentes architectures, de la plus brute à la plus sophistiquée, c'est finalement le modèle RAG (Retrieval-Augmented Generation) qui s'est révélé le plus adapté.
-
-*AJOUTER IMAGE : un visuel du campus de l'INSA Toulouse, ou une interaction stylisée entre un étudiant et un assistant IA.*
 
 ## Une Histoire Moderne des Chatbots
 
@@ -31,7 +48,7 @@ Pour alimenter notre chatbot, nous avons développé un scraper Java ciblant les
 - Environ 4,45 millions de mots extraits
 - 55 % des documents avec date de mise à jour identifiable
 
-*AJOUTER IMAGE : schéma de l'architecture de scraping (exploration, extraction, stockage).*
+![Image](/images/projects/building-a-chatbot-for-student-guidance/scrapping.png)
 
 Certaines limites se sont imposées, notamment l'incapacité à lire le contenu des images, les PDF scannés illisibles, ou encore la mauvaise extraction de tableaux complexes. Malgré tout, le volume de texte brut s'est révélé suffisant pour nos premières expérimentations.
 
@@ -46,7 +63,14 @@ Les jeux de données utilisés :
 
 Les résultats, malgré quelques améliorations de loss, sont restés très éloignés de nos attentes. Le modèle n'a pas appris correctement la syntaxe, ni su produire des phrases logiques.
 
-*AJOUTER IMAGE : tableau de performances des modèles Scratch (page 4).*
+| Name         | Training Device              | Language | Dataset              | Final Loss | Context Size | Batch Size | Duration   |
+|--------------|------------------------------|----------|-----------------------|------------|---------------|-------------|------------|
+| Scratch-v0.0 | Intel Core i7-8700           | English  | Shakespeare (2 MB)    | 1.1268     | 192           | 32          | 03:24:00   |
+| Scratch-v0.1 | Intel Core i7-8700           | English  | Shakespeare (2 MB)    | 0.8046     | 192           | 32          | 06:11:00   |
+| Scratch-v1.0 | 2&times;GPU NVIDIA RTX A4500      | English  | Shakespeare (2 MB)    | 0.9041     | 512           | 32          | 00:28:00   |
+| Scratch-v2.0 | 2&times;GPU NVIDIA RTX A4500      | French   | Wikipedia (10 GB)     | 1.0603     | 512           | 32          | 00:27:00   |
+| Scratch-v2.3 | 2&times;GPU NVIDIA RTX A4500      | French   | Wikipedia (10 GB)     | 0.6484     | 512           | 48          | 03:31:00   |
+
 
 La limite principale était matérielle : une seule carte GPU RTX A4500 ne suffit pas pour un entraînement profond. Pour des résultats comparables à GPT-2, il aurait fallu des semaines d'entraînement sur infrastructure distribuée.
 
@@ -74,7 +98,7 @@ Le processus :
 3. Les vecteurs sont indexés dans FAISS
 4. Lors d'une requête, les segments les plus proches sont extraits et injectés avec la question dans Mixtral-8x7B
 
-*AJOUTER IMAGE : pipeline RAG, étape par étape (voir page 6 du papier).*
+![RAG Pipeline](/images/projects/building-a-chatbot-for-student-guidance/rag.png)
 
 Avantage principal : le modèle peut s'appuyer sur des documents **à jour**, sans nécessiter de re-entraînement.
 
@@ -86,7 +110,7 @@ Nous avons développé une interface avec **Streamlit**, donnant naissance à IA
 - Ton formel et concis
 - Indication claire en cas d'absence d'information
 
-*AJOUTER IMAGE : capture d'écran de l'interface IAN (voir page 7).*
+![IAN Interface](/images/projects/building-a-chatbot-for-student-guidance/ian.png)
 
 Sur un test de 8 questions, 7 réponses ont été jugées pertinentes, tant pour les questions sur les règlements que pour les interactions générales.
 
