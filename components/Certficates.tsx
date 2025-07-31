@@ -4,6 +4,10 @@ const Udemy = () => (
   <Image src="/images/udemy.png" alt="Udemy" width={24} height={24} />
 )
 
+const TOEIC = () => (
+  <Image src="/images/toeic.png" alt="Udemy" width={24} height={24} />
+)
+
 export default function Certificates() {
   const items = [
     {
@@ -20,6 +24,12 @@ export default function Certificates() {
       description:
       "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
     },
+    {
+      title: "Certification TOEIC® - 885 / 990",
+      link: "https://www.etsglobal.org/fr/en/digital-score-report/7ED332706994A01B08CF92F743173D057AAEF9E1DD1DEFE929C195A1A74D1F15Y2Ric3FWNU9UbytCWlo2VW1sQzZjZlJKelBFdzk2V092YjBUdFNoWXpQcjdCVHM5",
+      icon: <TOEIC />,
+      description: "Test Listening & Reading (INSA Toulouse, 2025) - Listening : 470 / Reading : 415 - Niveau avancé, score valide jusqu'en mai 2027."
+    }
   ];
 
   return (
