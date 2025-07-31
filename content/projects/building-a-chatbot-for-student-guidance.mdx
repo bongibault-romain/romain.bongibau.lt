@@ -1,0 +1,129 @@
+export const metadata = {
+  title: "Développement d'un Chatbot Institutionnel à l'Ère de l'IA Générative ",
+  author: "John Doe"
+}
+
+![Image](https://adymrxvmro.cloudimg.io/v7/https://sherpas.com/content/uploads/2022/07/photo-8_0.jpg)
+
+# Un Chatbot pour Améliorer la Vie Étudiante : Notre Expérience à l'INSA Toulouse
+
+L'essor de l'intelligence artificielle dans l'éducation ouvre la voie à de nouveaux modes d'interaction entre étudiants et institutions. Au cœur de cette dynamique, les chatbots apparaissent comme une solution prometteuse pour répondre aux questions fréquentes, orienter les nouveaux arrivants et soulager les services administratifs. Mais ces outils doivent aussi composer avec un environnement instable, où l'information évolue sans cesse.
+
+À l'INSA Toulouse, nous avons entrepris la création d'un chatbot institutionnel capable de faire face à ces défis. Après avoir testé différentes architectures, de la plus brute à la plus sophistiquée, c'est finalement le modèle RAG (Retrieval-Augmented Generation) qui s'est révélé le plus adapté.
+
+*AJOUTER IMAGE : un visuel du campus de l'INSA Toulouse, ou une interaction stylisée entre un étudiant et un assistant IA.*
+
+## Une Histoire Moderne des Chatbots
+
+Les racines des chatbots remontent à Alan Turing, avec sa célèbre interrogation sur la capacité des machines à penser. Depuis ELIZA, premier programme conversationnel né dans les années 1960, les progrès sont fulgurants. L'introduction du deep learning et des transformers a permis de franchir des caps décisifs. Aujourd'hui, des modèles comme ChatGPT ou Siri sont capables de comprendre un langage naturel et de générer des réponses d'une fluidité remarquable.
+
+Parmi les architectures marquantes :
+
+- **GPT (Generative Pretrained Transformer)**, référence actuelle en génération de texte
+- **MoE (Mixture of Experts)**, utilisée dans Mixtral-8x7B
+- **RNN**, aujourd'hui dépassée, mais historiquement importante
+
+## Collecte de Données : Un Scraper pour l'INSA
+
+Pour alimenter notre chatbot, nous avons développé un scraper Java ciblant les sites publics de l'INSA Toulouse et sa plateforme Moodle. Résultat :
+
+- 6 215 pages collectées en 20 minutes
+- Environ 4,45 millions de mots extraits
+- 55 % des documents avec date de mise à jour identifiable
+
+*AJOUTER IMAGE : schéma de l'architecture de scraping (exploration, extraction, stockage).*
+
+Certaines limites se sont imposées, notamment l'incapacité à lire le contenu des images, les PDF scannés illisibles, ou encore la mauvaise extraction de tableaux complexes. Malgré tout, le volume de texte brut s'est révélé suffisant pour nos premières expérimentations.
+
+## Premier Essai : Construire un Modèle from Scratch
+
+Nous avons tenté de concevoir un modèle de langage de type SLM (Small Language Model) avec PyTorch, en testant plusieurs configurations de tokenisation (char-level et subword).
+
+Les jeux de données utilisés :
+
+- Shakespeare (2 Mo, anglais ancien)
+- Wikipédia en français (10 Go)
+
+Les résultats, malgré quelques améliorations de loss, sont restés très éloignés de nos attentes. Le modèle n'a pas appris correctement la syntaxe, ni su produire des phrases logiques.
+
+*AJOUTER IMAGE : tableau de performances des modèles Scratch (page 4).*
+
+La limite principale était matérielle : une seule carte GPU RTX A4500 ne suffit pas pour un entraînement profond. Pour des résultats comparables à GPT-2, il aurait fallu des semaines d'entraînement sur infrastructure distribuée.
+
+## Deuxième Tentative : Fine-tuning de GPT-2
+
+Nous avons ensuite opté pour l'adaptation d'un modèle existant : GPT-2. L'idée était d'utiliser un modèle pré-entraîné, puis de le spécialiser avec un jeu de données interne (100 documents issus de notre scraping).
+
+L'entraînement s'est fait localement, avec :
+
+- 3 epochs
+- batch size de 2
+- CPU Intel Core i7-13700H
+- tokenizer spécifique HuggingFace
+
+Malgré ces efforts, seuls 3,82 % des réponses étaient pleinement satisfaisantes selon deux évaluateurs humains. De plus, toute mise à jour des données impliquerait un re-entraînement fastidieux et énergivore.
+
+## RAG : La Solution Hybride qui Change Tout
+
+L'approche **Retrieval-Augmented Generation** combine le meilleur des deux mondes : recherche sémantique et génération de réponse.
+
+Le processus :
+
+1. Les documents sont découpés en segments de 1000 caractères
+2. Chaque segment est transformé en vecteur via MiniLM
+3. Les vecteurs sont indexés dans FAISS
+4. Lors d'une requête, les segments les plus proches sont extraits et injectés avec la question dans Mixtral-8x7B
+
+*AJOUTER IMAGE : pipeline RAG, étape par étape (voir page 6 du papier).*
+
+Avantage principal : le modèle peut s'appuyer sur des documents **à jour**, sans nécessiter de re-entraînement.
+
+## Tester l'Assistant : IAN
+
+Nous avons développé une interface avec **Streamlit**, donnant naissance à IAN (Intelligence Artificielle de l'INSA). L'interface impose :
+
+- Réponses en français
+- Ton formel et concis
+- Indication claire en cas d'absence d'information
+
+*AJOUTER IMAGE : capture d'écran de l'interface IAN (voir page 7).*
+
+Sur un test de 8 questions, 7 réponses ont été jugées pertinentes, tant pour les questions sur les règlements que pour les interactions générales.
+
+## Évaluer la Pertinence : Contradictions et Contexte
+
+Nous avons développé plusieurs outils pour détecter les faiblesses du système :
+
+- Calcul de similarité cosinus entre chunks
+- Re-rankers par cross-encoder (MiniLM)
+- Classifieur binaire pour estimer si une question est répondable
+
+Une découverte intéressante : la **plage de score FAISS** peut indiquer si les documents extraits sont utiles. Une plage étroite = peu de pertinence ; une plage large = diversité des réponses, donc bonne couverture.
+
+## Conclusion : Un Modèle Prometteur
+
+Notre travail démontre que RAG, combiné à une base bien structurée, peut devenir un outil fiable pour aider les étudiants dans un cadre académique. Il surpasse largement les modèles entraînés localement ou fine-tunés.
+
+Certes, tout n'est pas parfait. Il faudra :
+
+- Améliorer la gestion des ambiguïtés
+- Ajouter des sources structurées (emplois du temps, bases SQL)
+- Intégrer la multimodalité (images, formulaires)
+
+Mais les bases sont solides.
+
+## Perspectives Techniques
+
+Nous envisageons plusieurs améliorations :
+
+- Diviser l'index FAISS en sous-index spécialisés
+- Utiliser un classifieur pour déclencher ou non la réécriture des requêtes
+- Explorer les données structurées pour enrichir les réponses
+
+Ces pistes ouvrent la voie vers un assistant scolaire puissant et agile.
+
+## Remerciements
+
+Merci à **Philippe Leleux, Eric Alata** et **Céline Peyraube** pour leur accompagnement. Ce projet a été conduit avec sérieux, et aucun outil d'IA générative n'a été utilisé pour la recherche ou l'analyse. Uniquement pour améliorer la clarté du texte.
+
+[Building a Chatbot for Student Guidance](/attachments/building-a-chatbot-for-student-guidance.pdf)

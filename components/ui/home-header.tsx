@@ -4,18 +4,14 @@ import UserImg from "@/public/images/user-image.jpg";
 import HeaderImg01 from "@/public/images/header-image-01.jpg";
 import HeaderImg02 from "@/public/images/header-image-02.jpg";
 import HeaderImg03 from "@/public/images/header-image-03.jpg";
-import HomeButton from "./home-button";
 
-export default function Header() {
+export default function HomeHeader() {
   return (
     <header className="text-center pt-6">
       {/* Dark mode toggle */}
-      <div className="flex justify-between items-center mb-10 px-4">
-        <HomeButton />
       <ThemeToggle />
-      </div>
       {/* Intro */}
-      <div>
+      <div className="mb-10">
         <Image
           className="inline-flex rounded-full shadow-lg mb-4"
           src={UserImg}
@@ -38,6 +34,32 @@ export default function Header() {
         >
           Disponible pour un stage de fin d'études
         </a>
+      </div>
+      <div className="group flex justify-center gap-4">
+        <Image
+          className="rounded-xl even:rotate-2 odd:-rotate-2 even:group-hover:rotate-0 odd:group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] shadow-lg"
+          src={HeaderImg01}
+          width={245}
+          height={160}
+          alt="Header 01"
+          priority
+        />
+        <Image
+          className="rounded-xl even:rotate-2 odd:-rotate-2 even:group-hover:rotate-0 odd:group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] shadow-lg"
+          src={HeaderImg02}
+          width={245}
+          height={160}
+          alt="Header 02"
+          priority
+        />
+        <Image
+          className="rounded-xl even:rotate-2 odd:-rotate-2 even:group-hover:rotate-0 odd:group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] shadow-lg"
+          src={HeaderImg03}
+          width={245}
+          height={160}
+          alt="Header 03"
+          priority
+        />
       </div>
     </header>
   );

@@ -1,15 +1,15 @@
 import Image from "next/image";
 
 const LexLau = () => (
-  <Image src="/images/lexlau.png" alt="LexLau" width={24} height={24} />
+  <Image src="/images/lexlau.png" className="rounded-full" alt="LexLau" width={24} height={24} />
 )
 
 const Gerresheimer = () => (
-  <Image src="/images/gerresheimer.jpg" alt="Gerresheimer" width={24} height={24} />
+  <Image src="/images/gerresheimer.jpg" className="rounded-full" alt="Gerresheimer" width={24} height={24} />
 )
 
 const Maloc = () => (
-  <Image src="/images/maloc.png" alt="Maloc" width={24} height={24} />
+  <Image src="/images/maloc.png" className="rounded-full" alt="Maloc" width={24} height={24} />
 )
 
 export default function Experience() {

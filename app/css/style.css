@@ -8,6 +8,10 @@
   strategy: base;
 }
 
+@plugin "@tailwindcss/typography" {
+  strategy: base;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
