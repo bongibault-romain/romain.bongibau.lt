@@ -6,6 +6,7 @@ import Recommendations from "@/components/Recommendations";
 import Newsletter from "@/components/Newsletter";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
+import Certificates from "@/components/Certficates";
 
 export const metadata = {
   title: "Home - DevFolio",
@@ -16,10 +17,11 @@ export default async function Home() {
   return (
     <>
       <Experience />
-      <Projects />
-      <Education />
       <Recommendations />
-      <Articles />
+      {/* <Projects /> */}
+      <Education />
+      <Certificates />
+      {/* <Articles /> */}
     </>
   );
 }
