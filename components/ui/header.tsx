@@ -1,9 +1,6 @@
 import ThemeToggle from "./theme-toggle";
 import Image from "next/image";
-import UserImg from "@/public/images/user-image.jpg";
-import HeaderImg01 from "@/public/images/header-image-01.jpg";
-import HeaderImg02 from "@/public/images/header-image-02.jpg";
-import HeaderImg03 from "@/public/images/header-image-03.jpg";
+import UserImg from "@/public/images/me.png";
 import HomeButton from "./home-button";
 
 export default function Header() {
