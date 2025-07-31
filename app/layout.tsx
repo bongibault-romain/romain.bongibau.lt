@@ -2,6 +2,7 @@ import "./css/style.css";
 
 import { Inter, Inter_Tight } from "next/font/google";
 import Theme from "./theme-provider";
+import { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,6 +17,23 @@ const inter_tight = Inter_Tight({
   variable: "--font-inter-tight",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_URL!),
+  authors: [
+    {
+      name: "Romain Bongibault",
+      url: "https://romain.bongibau.lt",
+    },
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    noimageindex: false,
+    noarchive: true,
+  }
+};
 
 export default function RootLayout({
   children,

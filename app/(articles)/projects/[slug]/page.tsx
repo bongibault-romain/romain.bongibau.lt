@@ -27,18 +27,11 @@ export async function generateMetadata({
     openGraph: {
       title: metadata?.title,
       description: metadata?.description,
-      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${slug}`,
+      url: `/projects/${slug}`,
       images: metadata?.thumbnail ? [{ url: metadata.thumbnail }] : [],
       type: "article",
     },
     authors: metadata?.authors || [],
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      noimageindex: false,
-      noarchive: true,
-    },
   };
 }
 
