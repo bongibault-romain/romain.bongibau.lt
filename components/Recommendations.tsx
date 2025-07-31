@@ -70,7 +70,7 @@ export default function Recommendations() {
     setActiveState();
     containerRef.current?.addEventListener(
       "transitionend",
-      handleTransitionEnd,
+      handleTransitionEnd
     );
     containerRef.current?.addEventListener("mouseover", pauseCarousel);
     containerRef.current?.addEventListener("mouseout", playCarousel);
@@ -84,25 +84,29 @@ export default function Recommendations() {
           pauseCarousel();
         }
       },
-      true,
+      true
     );
     containerRef.current?.addEventListener(
       "blur-sm",
       (event) => {
+        const focusEvent = event as FocusEvent;
+
         if (
-          event.currentTarget &&
-          !(event.currentTarget as Node).contains(event.relatedTarget as Node)
+          focusEvent.currentTarget &&
+          !(focusEvent.currentTarget as Node).contains(
+            focusEvent.relatedTarget as Node
+          )
         ) {
           playCarousel();
         }
       },
-      true,
+      true
     );
     return () => {
       pauseCarousel();
       containerRef.current?.removeEventListener(
         "transitionend",
-        handleTransitionEnd,
+        handleTransitionEnd
       );
       containerRef.current?.removeEventListener("mouseover", pauseCarousel);
       containerRef.current?.removeEventListener("mouseout", playCarousel);
@@ -116,19 +120,23 @@ export default function Recommendations() {
             pauseCarousel();
           }
         },
-        true,
+        true
       );
       containerRef.current?.removeEventListener(
         "blur-sm",
         (event) => {
+          const focusEvent = event as FocusEvent;
+
           if (
-            event.currentTarget &&
-            !(event.currentTarget as Node).contains(event.relatedTarget as Node)
+            focusEvent.currentTarget &&
+            !(focusEvent.currentTarget as Node).contains(
+              focusEvent.relatedTarget as Node
+            )
           ) {
             playCarousel();
           }
         },
-        true,
+        true
       );
     };
   }, [articleWidth]);
