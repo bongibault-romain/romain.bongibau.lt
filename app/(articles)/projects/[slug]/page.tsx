@@ -44,20 +44,20 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  console.log("Generating static params for Project pages");
+// export async function generateStaticParams() {
+//   console.log("Generating static params for Project pages");
 
-  const files = await fs.readdir("content/projects");
+//   const files = await fs.readdir("content/projects");
 
-  console.log("Project files found:", files);
+//   console.log("Project files found:", files);
 
-  const slugs = files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => ({ slug: file.replace(".mdx", "") }));
+//   const slugs = files
+//     .filter((file) => file.endsWith(".mdx"))
+//     .map((file) => ({ slug: file.replace(".mdx", "") }));
 
-  console.log("Generated slugs:", slugs);
+//   console.log("Generated slugs:", slugs);
 
-  return slugs;
-}
+//   return slugs;
+// }
 
 export const dynamicParams = false;
