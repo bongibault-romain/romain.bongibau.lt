@@ -5,6 +5,8 @@ import Certificates from "@/components/Certficates";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
+  console.log(process.env)
+
   return {
     title: "Bongibault Romain - Portfolio",
     description:
