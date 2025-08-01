@@ -6,9 +6,9 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  console.log("Rendering Project page for slug:", params);
-
+  
   const { slug } = await params;
+  console.log("Rendering Project page for slug:", slug);
   const { default: Post, metadata } = await import(`@/content/projects/${slug}.mdx`);
 
   console.log("Project metadata for slug:", slug, metadata);
