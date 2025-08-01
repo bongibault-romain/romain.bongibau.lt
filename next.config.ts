@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 
 const nextConfig: NextConfig = {
+
   // Allow .mdx extensions for files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
@@ -16,6 +17,10 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ]
+  },
+
+  experimental: {
+    mdxRs: true, // Enable MDX support
   }
   
 }
