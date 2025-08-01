@@ -12,7 +12,7 @@ type Metadata = {
     description: string;
     publishedAt: string;
     keywords: string[];
-    authors?: { name: string; url?: string }[];
+    authors?: { name: string; url?: string; avatar?: string }[];
 };
 
 function parseFrontmatter(fileContent: string) {
