@@ -26,6 +26,7 @@ export const metadata: Metadata = {
       url: "https://romain.bongibau.lt",
     },
   ],
+  icons: '/favicon.ico',
   robots: {
     index: true,
     follow: true,
