@@ -10,7 +10,7 @@ export default async function Projects() {
   const files = await fs.readdir("content/projects");
   const items = files.filter(file => file.endsWith('.mdx')).map((file) => {
     const slug = file.replace('.mdx', '');
-    const { metadata } = require(`@/content/projects/${slug}.mdx`);
+    const { metadata } = require(`content/projects/${slug}.mdx`);
     
     return {
       title: metadata.title,
