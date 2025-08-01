@@ -1,14 +1,11 @@
 import createMDX from '@next/mdx'
 import { NextConfig } from 'next'
-import rehypeStringify from 'rehype-stringify'
-import remarkGfm from 'remark-gfm'
-import remarkRehype from 'remark-rehype'
 
 const nextConfig: NextConfig = {
 
   // Allow .mdx extensions for files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  
+
   experimental: {
     mdxRs: true, // Enable MDX support
   }
@@ -17,11 +14,7 @@ const nextConfig: NextConfig = {
  
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkGfm, remarkRehype],
-    rehypePlugins: [rehypeStringify],
-  },
+  extension: /\.(md|mdx)$/,
 })
  
 // Combine MDX and Next.js config

@@ -2,22 +2,14 @@ import fs from 'fs/promises'
 
 import Image from "next/image";
 import Link from 'next/link';
+import { getProjectPosts } from './mdx/utils';
 
 export default async function Projects() {
 
   console.log("Rendering Projects component");
 
   const files = await fs.readdir("content/projects");
-  const items = await Promise.all(files.filter(file => file.endsWith('.mdx')).map(async (file) => {
-    const slug = file.replace('.mdx', '');
-    const { metadata } = await import(`@/content/projects/${slug}.mdx`);
-    
-    return {
-      title: metadata?.title || 'Untitled Project',
-      image: metadata?.thumbnail || 'https://picsum.photos/200/300',
-      link: `/projects/${slug}`,
-    };
-  }));
+  const items = getProjectPosts();
 
   console.log("Projects items:", items);
 
