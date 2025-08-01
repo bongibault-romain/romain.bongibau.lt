@@ -9,7 +9,7 @@ type PostImageProps = {
 export default function PostImage({ alt, caption, ...props }: PostImageProps) {
   return (
     <figure>
-      <Image className="w-full rounded-sm" {...props} alt={alt} />
+      <Image className="w-full rounded-xl" {...props} alt={alt} />
       {caption && (
         <figcaption className="mt-3 text-center text-sm text-gray-500 dark:text-gray-200">
           {caption}
