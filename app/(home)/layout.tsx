@@ -1,11 +1,13 @@
 import Footer from "@/components/ui/footer";
 import HomeHeader from "@/components/ui/home-header";
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  console.log("Rendering HomeLayout");
+
   return (
     <>
       <HomeHeader />

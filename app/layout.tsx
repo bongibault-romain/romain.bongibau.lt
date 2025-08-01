@@ -40,6 +40,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log("Rendering RootLayout");
+
   return (
     <html lang="fr" suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}

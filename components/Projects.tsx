@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from 'next/link';
 
 export default async function Projects() {
+
+  console.log("Rendering Projects component");
+
   const files = await fs.readdir("content/projects");
   const items = files.filter(file => file.endsWith('.mdx')).map((file) => {
     const slug = file.replace('.mdx', '');
@@ -15,6 +18,8 @@ export default async function Projects() {
       link: `/projects/${slug}`,
     };
   });
+
+  console.log("Projects items:", items);
 
   return (
     <section>
