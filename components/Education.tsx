@@ -14,9 +14,6 @@ const ISP = () => (
 )
 
 export default function Education() {
-
-  console.log("Rendering Education component");
-
   const items = [
     {
       title: "Diplôme d'ingénieur en informatique et réseaux",
@@ -46,8 +43,6 @@ export default function Education() {
       "Spécialités : Mathématiques, Physique-Chimie, SVT - Option Mathématiques expertes. Ce parcours a confirmé mon intérêt pour les sciences et préparé le terrain pour mes études d'ingénieur."
     },
   ];
-
-  console.log("Education items:", items);
 
   return (
     <section>

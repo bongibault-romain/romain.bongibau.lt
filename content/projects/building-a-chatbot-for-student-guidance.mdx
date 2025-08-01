@@ -1,28 +1,24 @@
 ---
-title: "Développement d'un Chatbot Institutionnel à l'Ère de l'IA Générative ",
-image: '/images/projects/building-a-chatbot-for-student-guidance/thumbnail.jpg',
-description: "Découvrez comment nous avons développé un chatbot pour l'INSA Toulouse, alliant IA générative et recherche sémantique pour améliorer l'expérience étudiante.",
-publishedAt: '31-07-2025',
-keywords: [
-  'chatbot',
-  'IA générative',
-  'RAG',
-  'INSA Toulouse',
-  'étudiants',
-  'recherche sémantique',
-  'Mixtral-8x7B',
-  'Streamlit',
-  'FAISS',
-],
-authors: [
-  {
-    name: 'Romain Bongibault',
-    url: 'https://romain.bongibau.lt',
-  },
-],
+title: "Développement d'un Chatbot Institutionnel à l'Ère de l'IA Générative "
+image: '/images/projects/building-a-chatbot-for-student-guidance/thumbnail.jpg'
+description: "Découvrez comment nous avons développé un chatbot pour l'INSA Toulouse, alliant IA générative et recherche sémantique pour améliorer l'expérience étudiante."
+publishedAt: '31-07-2025'
+keywords:
+  - 'chatbot'
+  - 'IA générative'
+  - 'RAG'
+  - 'INSA Toulouse'
+  - 'étudiants'
+  - 'recherche sémantique'
+  - 'Mixtral-8x7B'
+  - 'Streamlit'
+  - 'FAISS'
+authors:
+  - name: 'Romain Bongibault'
+    url: 'https://romain.bongibau.lt'
 ---
 
-![Image](/images/projects/building-a-chatbot-for-student-guidance/thumbnail.jpg)
+<Image alt="INSA Toulouse" src="/images/projects/building-a-chatbot-for-student-guidance/thumbnail.jpg" width="1920" height="1080" />
 
 # Un Chatbot pour Améliorer la Vie Étudiante : Notre Expérience à l'INSA Toulouse
 
@@ -48,7 +44,8 @@ Pour alimenter notre chatbot, nous avons développé un scraper Java ciblant les
 - Environ 4,45 millions de mots extraits
 - 55 % des documents avec date de mise à jour identifiable
 
-![Image](/images/projects/building-a-chatbot-for-student-guidance/scrapping.png)
+<Image alt="Scraping" caption="Fig 1. Aperçu du processus de scraping" src="/images/projects/building-a-chatbot-for-student-guidance/scrapping.png" width="1512" height="446" />
+
 
 Certaines limites se sont imposées, notamment l'incapacité à lire le contenu des images, les PDF scannés illisibles, ou encore la mauvaise extraction de tableaux complexes. Malgré tout, le volume de texte brut s'est révélé suffisant pour nos premières expérimentations.
 
@@ -98,7 +95,7 @@ Le processus :
 3. Les vecteurs sont indexés dans FAISS
 4. Lors d'une requête, les segments les plus proches sont extraits et injectés avec la question dans Mixtral-8x7B
 
-![RAG Pipeline](/images/projects/building-a-chatbot-for-student-guidance/rag.png)
+<Image alt="RAG Pipeline" caption="Fig 2. Pipeline RAG" src="/images/projects/building-a-chatbot-for-student-guidance/rag.png" width="2500" height="1080" />
 
 Avantage principal : le modèle peut s'appuyer sur des documents **à jour**, sans nécessiter de re-entraînement.
 
@@ -110,7 +107,7 @@ Nous avons développé une interface avec **Streamlit**, donnant naissance à IA
 - Ton formel et concis
 - Indication claire en cas d'absence d'information
 
-![IAN Interface](/images/projects/building-a-chatbot-for-student-guidance/ian.png)
+<Image alt="Interface IAN" src="/images/projects/building-a-chatbot-for-student-guidance/ian.png" width="1952" height="1788" />
 
 Sur un test de 8 questions, 7 réponses ont été jugées pertinentes, tant pour les questions sur les règlements que pour les interactions générales.
 
@@ -150,4 +147,4 @@ Ces pistes ouvrent la voie vers un assistant scolaire puissant et agile.
 
 Merci à **Philippe Leleux, Eric Alata** et **Céline Peyraube** pour leur accompagnement. Ce projet a été conduit avec sérieux, et aucun outil d'IA générative n'a été utilisé pour la recherche ou l'analyse. Uniquement pour améliorer la clarté du texte.
 
-L'article complet avec tous les détails techniques et résultats est disponible en téléchargement : [Building a Chatbot for Student Guidance](/attachments/building-a-chatbot-for-student-guidance.pdf).
+[Building a Chatbot for Student Guidance](/attachments/building-a-chatbot-for-student-guidance.pdf).

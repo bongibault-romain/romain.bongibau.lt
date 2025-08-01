@@ -9,8 +9,6 @@ const TOEIC = () => (
 )
 
 export default function Certificates() {
-  console.log("Rendering Certificates component");
-
   const items = [
     {
       title: "Formation de Développeur Web",
@@ -33,8 +31,6 @@ export default function Certificates() {
       "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
     },
   ];
-
-  console.log("Certificates items:", items);
 
   return (
     <section>

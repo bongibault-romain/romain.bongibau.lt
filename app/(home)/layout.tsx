@@ -6,8 +6,6 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("Rendering HomeLayout");
-
   return (
     <>
       <HomeHeader />

@@ -1,17 +1,9 @@
-import fs from 'fs/promises'
-
 import Image from "next/image";
 import Link from 'next/link';
 import { getProjectPosts } from './mdx/utils';
 
 export default async function Projects() {
-
-  console.log("Rendering Projects component");
-
-  const files = await fs.readdir("content/projects");
   const items = getProjectPosts();
-
-  console.log("Projects items:", items);
 
   return (
     <section>
@@ -27,16 +19,16 @@ export default async function Projects() {
             <figure className="absolute inset-0 before:absolute before:inset-0 before:bg-linear-to-t before:to-75% before:from-gray-950/50 before:to-transparent">
               <Image
                 className="h-full w-full object-cover"
-                src={item.image}
+                src={item.metadata.image}
                 width={600}
                 height={338}
-                alt={item.title}
+                alt={item.metadata.title}
               />
             </figure>
             <div className="relative flex flex-col justify-end h-full w-full px-6 py-5">
               <h3 className="text-sm font-medium text-white">
-                <Link className="before:absolute before:inset-0" href={item.link}>
-                  {item.title}
+                <Link className="before:absolute before:inset-0" href={`/projects/${item.slug}`}>
+                  {item.metadata.title}
                 </Link>
               </h3>
             </div>

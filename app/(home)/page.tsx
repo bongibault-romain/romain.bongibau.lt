@@ -4,9 +4,7 @@ import Projects from "@/components/Projects";
 import Certificates from "@/components/Certficates";
 import { Metadata } from "next";
 
-export async function generateMetadata(): Promise<Metadata> {
-  console.log("Generating metadata for Home page");
-  
+export async function generateMetadata(): Promise<Metadata> {  
   return {
     title: "Bongibault Romain - Portfolio",
     description:
@@ -33,9 +31,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-
-  console.log("Rendering Home page");
-
   return (
     <>
       <Experience />

@@ -1,5 +1,7 @@
-import fs from "fs/promises";
+import { CustomMDX } from "@/components/mdx/mdx";
+import { getProjectPosts } from "@/components/mdx/utils";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -7,14 +9,18 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  console.log("Rendering Project page for slug:", slug);
-  const { default: Post, metadata } = await import(`@/content/projects/${slug}.mdx`);
-  const all = await import(`@/content/projects/${slug}.mdx`);
 
-  console.log("Project metadata for slug:", slug, metadata);
-  console.log("Project content for slug:", slug, all);
+  const project = getProjectPosts().find((p) => p.slug === slug);
 
-  return <Post />;
+  if (!project) {
+    return notFound();
+  }
+
+  return (
+    <>
+      <CustomMDX source={project.content} />
+    </>
+  );
 }
 
 export async function generateMetadata({
@@ -22,42 +28,26 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  console.log("Generating metadata for Project page");
-
   const { slug } = await params;
-  const { metadata } = await import(`@/content/projects/${slug}.mdx`);
-
-  console.log("Project metadata for slug:", slug, metadata);
+  const project = getProjectPosts().find((p) => p.slug === slug);
 
   return {
-    title: metadata?.title,
-    description: metadata?.description,
-    keywords: metadata?.keywords || [],
+    title: project?.metadata?.title,
+    description: project?.metadata?.description,
+    keywords: project?.metadata?.keywords || [],
     openGraph: {
-      title: metadata?.title + ' - Bongibault Romain - Portfolio',
-      description: metadata?.description,
+      title: project?.metadata?.title + ' - Bongibault Romain - Portfolio',
+      description: project?.metadata?.description,
       url: `/projects/${slug}`,
-      images: metadata?.thumbnail ? [{ url: metadata.thumbnail }] : [],
+      images: project?.metadata?.image ? [{ url: project.metadata.image }] : [],
       type: "article",
     },
-    authors: metadata?.authors || [],
+    authors: project?.metadata?.authors || [],
   };
 }
 
 export async function generateStaticParams() {
-  console.log("Generating static params for Project pages");
-
-  const files = await fs.readdir("content/projects");
-
-  console.log("Project files found:", files);
-
-  const slugs = files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => ({ slug: file.replace(".mdx", "") }));
-
-  console.log("Generated slugs:", slugs);
-
-  return slugs;
+  return getProjectPosts().map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;

@@ -1,8 +1,7 @@
 import React from "react";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote-client/rsc";
 import PostLink from "./link";
 import PostImage from "./image";
-import PostBanner from "./banner";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const transformToSlug = (input: string) => {
@@ -39,12 +38,12 @@ const mdxComponents = {
   h4: generateHeading(4),
   Link: PostLink,
   Image: PostImage,
-  Banner: PostBanner,
 };
 
 export function CustomMDX(props: any) {
   const rehypePrettyCodeOptions = {
-    theme: "one-dark-pro",
+    theme: "github-dark-dimmed",
+    keepBackground: false,
     onVisitLine(node: any) {
       // Prevent lines from collapsing in `display: grid` mode, and
       // allow empty lines to be copy/pasted

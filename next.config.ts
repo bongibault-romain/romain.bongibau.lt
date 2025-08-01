@@ -5,11 +5,6 @@ const nextConfig: NextConfig = {
 
   // Allow .mdx extensions for files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-
-  experimental: {
-    mdxRs: true, // Enable MDX support
-  }
-  
 }
  
 const withMDX = createMDX({

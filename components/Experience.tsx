@@ -13,9 +13,6 @@ const Maloc = () => (
 )
 
 export default function Experience() {
-
-  console.log("Rendering Experience component");
-
   const items = [
     {
       title: "Stagiaire Développeur Full Stack",
@@ -44,8 +41,6 @@ export default function Experience() {
       "Développement d'une API REST robuste en Node.js avec le framework AdonisJS : modélisation de la base de données, gestion de l'authentification, création des endpoints métiers. Travail en collaboration étroite avec l'équipe Frontend pour assurer l'intégration fluide des fonctionnalités et la cohérence entre les couches applicatives."
     },
   ];
-
-  console.log("Experience items:", items);
 
   return (
     <section>
