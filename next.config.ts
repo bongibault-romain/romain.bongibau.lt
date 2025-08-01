@@ -8,17 +8,7 @@ const nextConfig: NextConfig = {
 
   // Allow .mdx extensions for files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
-  images: {
-    // allow all remote images
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ]
-  },
-
+  
   experimental: {
     mdxRs: true, // Enable MDX support
   }
