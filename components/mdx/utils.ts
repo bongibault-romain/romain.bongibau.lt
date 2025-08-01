@@ -4,7 +4,11 @@ import path from "path";
 
 type Metadata = {
     title: string;
-    image: string;
+    image?: {
+        path: string;
+        width: number;
+        height: number;
+    };
     description: string;
     publishedAt: string;
     keywords: string[];

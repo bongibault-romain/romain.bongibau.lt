@@ -1,6 +1,7 @@
 import { CustomMDX } from "@/components/mdx/mdx";
 import { getProjectPosts } from "@/components/mdx/utils";
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export default async function Page({
@@ -15,9 +16,18 @@ export default async function Page({
   if (!project) {
     return notFound();
   }
-
+  
   return (
     <>
+      {project.metadata.image && (
+        <Image
+          alt={project.metadata.title}
+          src={project.metadata.image.path}
+          width={project.metadata.image.width}
+          height={project.metadata.image.height}
+        />
+      )}
+
       <CustomMDX source={project.content} />
     </>
   );
@@ -36,10 +46,10 @@ export async function generateMetadata({
     description: project?.metadata?.description,
     keywords: project?.metadata?.keywords || [],
     openGraph: {
-      title: project?.metadata?.title + ' - Bongibault Romain - Portfolio',
+      title: project?.metadata?.title + " - Bongibault Romain - Portfolio",
       description: project?.metadata?.description,
       url: `/projects/${slug}`,
-      images: project?.metadata?.image ? [{ url: project.metadata.image }] : [],
+      images: project?.metadata?.image ? [{ url: project.metadata.image.path }] : [],
       type: "article",
     },
     authors: project?.metadata?.authors || [],
