@@ -1,0 +1,119 @@
+---
+title: "De la Compilation à l'Exécution : Conception d'un Système Complet (Compilateur + Processeur RISC)"
+description: "Découvrez comment nous avons conçu un compilateur de A à Z, du langage haut niveau à l'exécution sur un processeur RISC avec pipeline. Un projet complet en informatique."
+publishedAt: '01-08-2025'
+image: '/images/projects/compilateur-risc-cross-compilateur-pipeline/thumbnail.jpg'
+keywords: 
+    - compilateur
+    - assembleur
+    - RISC
+    - YACC
+    - LEX
+    - pipeline
+    - cross-compilation
+    - architecture processeur
+    - projet informatique
+    - portfolio étudiant
+authors:
+  - name: 'Romain Bongibault'
+    url: 'https://romain.bongibau.lt'
+  - name: 'Elsa Hindi'
+---
+
+<Image alt="Compilateur RISC" src="/images/projects/compilateur-risc-cross-compilateur-pipeline/thumbnail.jpg" width="3888" height="2592" />
+
+# De la Compilation à l'Exécution : Conception d'un Système Informatique Complet
+
+Dans le cadre d'un projet d'ingénierie, nous avons eu l'opportunité de concevoir un système informatique de bout en bout : depuis la définition d'un langage source haut niveau jusqu'à son exécution simulée sur un processeur RISC pipeliné. Ce projet nous a permis d'explorer toutes les strates de l'informatique système : compilation, assembleur, architecture matérielle, gestion de la mémoire, exécution d'instructions et même la détection d'aléas de données.
+
+## Objectif du projet
+
+Notre travail reposait sur deux piliers principaux :
+
+1. Créer un compilateur traduisant un langage proche du C en un assembleur orienté mémoire.
+2. Concevoir un processeur RISC capable d'exécuter un code assembleur orienté registre, via une architecture pipeline.
+
+Entre ces deux mondes, nous avons également développé un **cross-compilateur** et un **interpréteur**, ce qui a permis de chaîner toutes les étapes de transformation d'un programme.
+
+*AJOUTER IMAGE : schéma d'architecture montrant les 4 blocs (compilateur → assembleur mémoire → registre → exécution)*
+
+## Partie I - Conception du compilateur (LEX/YACC)
+
+Le langage source est volontairement simple mais proche du C : on y retrouve les types `int` et `bool`, des conditions, des boucles (`for`, `while`, `do-while`) et la plupart des opérateurs usuels. 
+
+Une grande attention a été portée à l'optimisation du code intermédiaire, notamment dans la gestion des variables temporaires.
+
+| Exemple C                  | Code Non Optimisé                       | Code Optimisé                          |
+|----------------------------|-----------------------------------------|----------------------------------------|
+| `int a = 2;`               | `MOVi 0 2`<br />`MOV 1 0 // @a = 1`       | `MOVi 0 2 // @a = 0`                   |
+| `int a = 2 + 2;`           | `MOVi 0 2`<br />`MOVi 1 2`<br />`ADD 2 0 1` | `MOVi 0 2`<br />`MOVi 1 2`<br />`ADD 0 0 1`|
+| `bool a = (4+5) <= (10-1)`| ...                                    | `LE 0 0 1 // @a = 0`                   |
+
+Les blocs `if/else`, `for`, et `while` sont gérés avec des adresses temporaires que le compilateur remplit dynamiquement après le parsing, garantissant une exécution fluide sans sauts erronés.
+
+## Partie II - Assembleur orienté mémoire & interpréteur
+
+Le format de sortie du compilateur suit une structure fixe `OP @A @B @C`, chaque instruction étant codée sur 32 bits. Voici les instructions les plus utilisées :
+
+| Catégorie        | Instructions disponibles                                                 |
+|------------------|---------------------------------------------------------------------------|
+| Arithmétiques     | `ADD`, `SUB`, `MUL`, `DIV`, `MOD`                                       |
+| Logiques          | `AND`, `OR`, `NOT`                                                      |
+| Comparateurs      | `EQ`, `NEQ`, `LT`, `LE`, `GT`, `GE`                                     |
+| Contrôle de flux  | `JMP`, `JMPZ`, `JMPNZ`, `CALL`, `RET`                                   |
+| Divers            | `MOV`, `MOVi`, `PRI`, `INCO`, `DECO`                                    |
+
+L'interpréteur exécute ce code assembleur ligne par ligne en simulant une mémoire, un pointeur d'instruction, et les opérations classiques de traitement.
+
+## Partie III - Conception du processeur RISC pipeliné
+
+Nous avons développé une architecture RISC à 5 étages : Fetch, Decode, Execute, Memory et Write Back. Chaque étape est implémentée de manière modulaire, avec une gestion fine des conflits de registres.
+
+Parmi les composants clés :
+
+- L'ALU réalise toutes les opérations, en tenant compte des flags `Z`, `N`, `O`, `C`.
+- La ROM contient les instructions à exécuter.
+- La RAM permet le stockage temporaire.
+- Un banc de 16 registres stocke les données 8 bits.
+- Le `data_hazards_manager` détecte les lectures concurrentes de registres et insère des NOP si nécessaire.
+
+*AJOUTER IMAGE : pipeline + visualisation du gestionnaire de conflits (multiplexeur de bulles)*
+
+## Partie IV - Cross-compilation (mémoire → registre)
+
+Le compilateur initial génère du code orienté mémoire. Pour exécuter ce code sur notre processeur orienté registre, nous avons conçu un **cross-compilateur Python**.
+
+Le principe : remplacer chaque instruction mémoire par une séquence registre équivalente, en insérant des instructions de chargement et de sauvegarde.
+
+| Code mémoire             | Code registre équivalent                          |
+|--------------------------|----------------------------------------------------|
+| `ADD @A @B @C`           | `LDR 0 @B`<br />`LDR 1 @C`<br />`ADD 1 1 0`<br />`STR @A 1` |
+
+Ce mécanisme permet de transformer automatiquement n'importe quel code généré par notre compilateur en un programme exécutable sur le processeur.
+
+## Partie V - Intégration finale et tests
+
+Après le développement modulaire des composants, nous avons validé l'intégration complète :
+
+- Compilation d'un programme source vers assembleur mémoire
+- Transformation par le cross-compilateur vers assembleur registre
+- Exécution du code sur le simulateur RISC pipeline
+
+Chaque étape produit un fichier de sortie qui devient l'entrée de l'étape suivante, permettant une chaîné de compilation fiable.
+
+## Conclusion
+
+Ce projet fut une expérience intense et formatrice. Il nous a permis de toucher à la fois aux couches logicielles (analyse lexicale, syntaxique, sémantique, génération de code) et matérielles (architecture, exécution, pipeline, registres).
+
+Nous en retenons des compétences clés :
+
+- Conception d'un langage avec LEX/YACC
+- Génération de code optimisé et structuré
+- Simulation d'un pipeline et gestion des aléas de données
+- Transformation d'architectures mémoire vers registre
+
+Ce travail reflète notre capacité à concevoir, coder, tester et intégrer des systèmes complexes.
+
+## Remerciements
+
+Nous remercions nos encadrants pour leur accompagnement tout au long du projet. Le travail présenté ici a été réalisé intégralement par notre binôme, du compilateur au processeur, avec rigueur et passion.
