@@ -9,9 +9,11 @@ export default async function Page({
   
   const { slug } = await params;
   console.log("Rendering Project page for slug:", slug);
-  const { default: Post, metadata } = await import(`content/projects/${slug}.mdx`);
+  const { default: Post, metadata } = await import(`@/content/projects/${slug}.mdx`);
+  const all = await import(`@/content/projects/${slug}.mdx`);
 
   console.log("Project metadata for slug:", slug, metadata);
+  console.log("Project content for slug:", slug, all);
 
   return <Post />;
 }
@@ -24,7 +26,7 @@ export async function generateMetadata({
   console.log("Generating metadata for Project page");
 
   const { slug } = await params;
-  const { metadata } = await import(`content/projects/${slug}.mdx`);
+  const { metadata } = await import(`@/content/projects/${slug}.mdx`);
 
   console.log("Project metadata for slug:", slug, metadata);
 
