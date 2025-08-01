@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote-client/rsc";
 import PostLink from "./link";
 import PostImage from "./image";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 const transformToSlug = (input: string) => {
   return input
@@ -38,6 +39,35 @@ const mdxComponents = {
   h4: generateHeading(4),
   Link: PostLink,
   Image: PostImage,
+
+  table: ({ children }: { children: React.ReactNode }) => (
+    <div className="overflow-x-auto mb-4 rounded-xl">
+      <table className="border-collapse w-full max-w-full overflow-hidden text-left text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 mb-0 mt-0">
+        {children}
+      </table>
+    </div>
+  ),
+  thead: ({ children }: { children: React.ReactNode }) => (
+    <thead className="bg-gray-100 dark:bg-gray-700">{children}</thead>
+  ),
+  tr: ({ children }: { children: React.ReactNode }) => (
+    <tr className="border-b rounded-xl last:border-0 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+      {children}
+    </tr>
+  ),
+  th: ({ children }: { children: React.ReactNode }) => (
+    <th className="border-0 px-4 py-3 text-gray-800 dark:text-gray-100 font-semibold">
+      {children}
+    </th>
+  ),
+  td: ({ children }: { children: React.ReactNode }) => (
+    <td className="border-0 px-4 py-3 text-gray-600 dark:text-gray-400">
+      {children}
+    </td>
+  ),
+  hr: () => (
+    <hr className="border-gray-200 dark:border-gray-700 mt-4 mb-4 block" />
+  ),
 };
 
 export function CustomMDX(props: any) {
@@ -64,10 +94,11 @@ export function CustomMDX(props: any) {
   return (
     <MDXRemote
       {...props}
-      components={{ ...mdxComponents, ...(props.components || {}) }}
+      components={{ ...mdxComponents, ...(props.componentsn || {}) }}
       options={{
         mdxOptions: {
           rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+          remarkPlugins: [remarkGfm]
         },
       }}
     />
