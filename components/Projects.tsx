@@ -13,8 +13,8 @@ export default async function Projects() {
     const { metadata } = await import(`@/content/projects/${slug}.mdx`);
     
     return {
-      title: metadata.title,
-      image: metadata.thumbnail || 'https://picsum.photos/200/300',
+      title: metadata?.title || 'Untitled Project',
+      image: metadata?.thumbnail || 'https://picsum.photos/200/300',
       link: `/projects/${slug}`,
     };
   }));
