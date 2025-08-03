@@ -1,15 +1,14 @@
 ---
-title: "De la Compilation à l'Exécution : Conception d'un Système Complet (Compilateur + Processeur RISC)"
-description: "Découvrez comment nous avons conçu un compilateur de A à Z, du langage haut niveau à l'exécution sur un processeur RISC avec pipeline. Un projet complet en informatique."
+title: "De la Compilation à l'Exécution : Conception d'un Système Complet (Compilateur + Processeur)"
+description: "Découvrez comment nous avons conçu un compilateur de A à Z, du langage haut niveau à l'exécution sur un processeur avec pipeline. Un projet complet en informatique."
 publishedAt: '2025-08-01T21:13:35+00:00'
 image: 
-    path: '/images/projects/compilateur-risc-cross-compilateur-pipeline/thumbnail.jpg'
+    path: '/images/projects/compilateur-cross-compilateur-pipeline/thumbnail.jpg'
     width: 3888
     height: 2592
 keywords: 
     - compilateur
     - assembleur
-    - RISC
     - YACC
     - LEX
     - pipeline
@@ -25,18 +24,18 @@ authors:
     avatar: '/images/people/elsa.jpg'
 ---
 
-Dans le cadre d'un projet d'ingénierie, nous avons eu l'opportunité de concevoir un système informatique de bout en bout : depuis la définition d'un langage source haut niveau jusqu'à son exécution simulée sur un processeur RISC pipeliné. Ce projet nous a permis d'explorer toutes les strates de l'informatique système : compilation, assembleur, architecture matérielle, gestion de la mémoire, exécution d'instructions et même la détection d'aléas de données.
+Dans le cadre d'un projet d'ingénierie, nous avons eu l'opportunité de concevoir un système informatique de bout en bout : depuis la définition d'un langage source haut niveau jusqu'à son exécution simulée sur un processeur pipeliné. Ce projet nous a permis d'explorer toutes les strates de l'informatique système : compilation, assembleur, architecture matérielle, gestion de la mémoire, exécution d'instructions et même la détection d'aléas de données.
 
 ## Objectif du projet
 
 Notre travail reposait sur deux piliers principaux :
 
 1. Créer un compilateur traduisant un langage proche du C en un assembleur orienté mémoire.
-2. Concevoir un processeur RISC capable d'exécuter un code assembleur orienté registre, via une architecture pipeline.
+2. Concevoir un processeur capable d'exécuter un code assembleur orienté registre, via une architecture pipeline.
 
 Entre ces deux mondes, nous avons également développé un **cross-compilateur** et un **interpréteur**, ce qui a permis de chaîner toutes les étapes de transformation d'un programme.
 
-*AJOUTER IMAGE : schéma d'architecture montrant les 4 blocs (compilateur → assembleur mémoire → registre → exécution)*
+<Image alt="Schéma d'architecture" caption="Fig. 1 - Schéma d'architecture montrant les 4 blocs (compilateur → assembleur mémoire → registre → exécution)" src="/images/projects/compilateur-cross-compilateur-pipeline/architecture.png" />
 
 ## Partie I - Conception du compilateur (LEX/YACC)
 
@@ -66,9 +65,9 @@ Le format de sortie du compilateur suit une structure fixe `OP @A @B @C`, chaque
 
 L'interpréteur exécute ce code assembleur ligne par ligne en simulant une mémoire, un pointeur d'instruction, et les opérations classiques de traitement.
 
-## Partie III - Conception du processeur RISC pipeliné
+## Partie III - Conception du processeur pipeliné
 
-Nous avons développé une architecture RISC à 5 étages : Fetch, Decode, Execute, Memory et Write Back. Chaque étape est implémentée de manière modulaire, avec une gestion fine des conflits de registres.
+Nous avons développé une architecture à 5 étages : Fetch, Decode, Execute, Memory et Write Back. Chaque étape est implémentée de manière modulaire, avec une gestion fine des conflits de registres.
 
 Parmi les composants clés :
 
@@ -78,7 +77,7 @@ Parmi les composants clés :
 - Un banc de 16 registres stocke les données 8 bits.
 - Le `data_hazards_manager` détecte les lectures concurrentes de registres et insère des NOP si nécessaire.
 
-*AJOUTER IMAGE : pipeline + visualisation du gestionnaire de conflits (multiplexeur de bulles)*
+<Image alt="Architecture de notre processeur" caption="Fig. 2 - Architecture de notre processeur, sans gestion des conflits" src="/images/projects/compilateur-cross-compilateur-pipeline/pipeline.png" />
 
 ## Partie IV - Cross-compilation (mémoire → registre)
 
@@ -98,7 +97,7 @@ Après le développement modulaire des composants, nous avons validé l'intégra
 
 - Compilation d'un programme source vers assembleur mémoire
 - Transformation par le cross-compilateur vers assembleur registre
-- Exécution du code sur le simulateur RISC pipeline
+- Exécution du code sur le simulateur pipeline
 
 Chaque étape produit un fichier de sortie qui devient l'entrée de l'étape suivante, permettant une chaîné de compilation fiable.
 
@@ -118,3 +117,5 @@ Ce travail reflète notre capacité à concevoir, coder, tester et intégrer des
 ## Remerciements
 
 Nous remercions nos encadrants pour leur accompagnement tout au long du projet. Le travail présenté ici a été réalisé intégralement par notre binôme, du compilateur au processeur, avec rigueur et passion.
+
+Vous pouvez retrouver le code source complet de ce projet sur notre [GitHub](https://github.com/bongibault-romain/systeme-informatique)
