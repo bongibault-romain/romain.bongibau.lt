@@ -44,7 +44,7 @@ Pour alimenter notre chatbot, nous avons développé un scraper Java ciblant les
 - Environ 4,45 millions de mots extraits
 - 55 % des documents avec date de mise à jour identifiable
 
-<Image alt="Scraping" caption="Fig 1. Aperçu du processus de scraping" src="/images/projects/building-a-chatbot-for-student-guidance/scrapping.png" width="1512" height="446" />
+<Image alt="Scraping" caption="Fig. 1 - Aperçu du processus de scraping" src="/images/projects/building-a-chatbot-for-student-guidance/scrapping.png" width="1512" height="446" />
 
 
 Certaines limites se sont imposées, notamment l'incapacité à lire le contenu des images, les PDF scannés illisibles, ou encore la mauvaise extraction de tableaux complexes. Malgré tout, le volume de texte brut s'est révélé suffisant pour nos premières expérimentations.
@@ -95,7 +95,7 @@ Le processus :
 3. Les vecteurs sont indexés dans FAISS
 4. Lors d'une requête, les segments les plus proches sont extraits et injectés avec la question dans Mixtral-8x7B
 
-<Image alt="RAG Pipeline" caption="Fig 2. Pipeline RAG" src="/images/projects/building-a-chatbot-for-student-guidance/rag.png" width="2500" height="1080" />
+<Image alt="RAG Pipeline" caption="Fig. 2 - Pipeline RAG" src="/images/projects/building-a-chatbot-for-student-guidance/rag.png" width="2500" height="1080" />
 
 Avantage principal : le modèle peut s'appuyer sur des documents **à jour**, sans nécessiter de re-entraînement.
 
