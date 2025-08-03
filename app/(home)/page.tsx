@@ -3,6 +3,7 @@ import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Certificates from "@/components/Certficates";
 import { Metadata } from "next";
+import Skills from "@/components/Skills";
 
 export async function generateMetadata(): Promise<Metadata> {  
   return {
@@ -38,6 +39,7 @@ export default async function Home() {
       <Projects />
       <Education />
       <Certificates />
+      <Skills />
       {/* <Articles /> */}
     </>
   );
