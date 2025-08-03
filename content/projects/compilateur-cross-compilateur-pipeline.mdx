@@ -35,7 +35,7 @@ Notre travail reposait sur deux piliers principaux :
 
 Entre ces deux mondes, nous avons également développé un **cross-compilateur** et un **interpréteur**, ce qui a permis de chaîner toutes les étapes de transformation d'un programme.
 
-<Image alt="Schéma d'architecture" caption="Fig. 1 - Schéma d'architecture montrant les 4 blocs (compilateur → assembleur mémoire → registre → exécution)" src="/images/projects/compilateur-cross-compilateur-pipeline/architecture.png" />
+<Image width="1190" height="722" alt="Schéma d'architecture" caption="Fig. 1 - Schéma d'architecture montrant les 4 blocs (compilateur → assembleur mémoire → registre → exécution)" src="/images/projects/compilateur-cross-compilateur-pipeline/architecture.png" />
 
 ## Partie I - Conception du compilateur (LEX/YACC)
 
@@ -77,7 +77,7 @@ Parmi les composants clés :
 - Un banc de 16 registres stocke les données 8 bits.
 - Le `data_hazards_manager` détecte les lectures concurrentes de registres et insère des NOP si nécessaire.
 
-<Image alt="Architecture de notre processeur" caption="Fig. 2 - Architecture de notre processeur, sans gestion des conflits" src="/images/projects/compilateur-cross-compilateur-pipeline/pipeline.png" />
+<Image width="1652" height="610" alt="Architecture de notre processeur" caption="Fig. 2 - Architecture de notre processeur, sans gestion des conflits" src="/images/projects/compilateur-cross-compilateur-pipeline/pipeline.png" />
 
 ## Partie IV - Cross-compilation (mémoire → registre)
 
