@@ -40,7 +40,7 @@ export default async function Page({
             {project.metadata.authors?.map((author, index) => (
               <img
                 key={index}
-                className="rounded-full border-2 border-white aspect-square object-cover"
+                className="rounded-full border-2 border-white aspect-square object-cover w-8 h-8"
                 src={author.avatar || "/images/me.png"}
                 width={32}
                 height={32}
