@@ -33,6 +33,13 @@ export const metadata: Metadata = {
     nocache: false,
     noimageindex: false,
     noarchive: true,
+  },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": "/projects.xml",
+      "application/atom+xml": "/projects.xml",
+    },
   }
 };
 

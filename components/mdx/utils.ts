@@ -70,7 +70,7 @@ export function getProjectPostsRSSFeed() {
         description: "Découvrez les projets de Romain Bongibault",
         language: "fr",
         copyright: "Romain Bongibault",
-        feed_url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/feed.xml`,
+        feed_url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects.xml`,
         site_url: process.env.NEXT_PUBLIC_WEBSITE_URL!,
     });
 
