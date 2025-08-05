@@ -82,6 +82,7 @@ export function getProjectPostsRSSFeed() {
             description: post.metadata.description,
             url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${post.slug}`,
             date: post.metadata.publishedAt,
+            author: post.metadata.authors?.map(author => author.name).join(", ") || "Romain Bongibault",
         });
     });
 
