@@ -1,6 +1,8 @@
 import fs from "fs";
 import matter from "gray-matter";
+import { MetadataRoute } from "next";
 import path from "path";
+import rss from 'rss';
 
 type Metadata = {
     title: string;
@@ -45,4 +47,43 @@ function getMDXData(dir: string) {
 
 export function getProjectPosts() {
     return getMDXData(path.join(process.cwd(), "content/projects"));
+}
+
+export function generateSitemap(): MetadataRoute.Sitemap {
+    const posts = getProjectPosts();
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
+
+    return posts.map((post) => {
+        return {
+            url: `${siteUrl}/projects/${post.slug}`,
+            lastModified: post.metadata.publishedAt,
+            changeFrequency: "weekly",
+            priority: 0.5,
+            images: post.metadata.image ? [`${siteUrl}${post.metadata.image.path}`] : []
+        };
+    })
+}
+
+export function getProjectPostsRSSFeed() {
+    const feed = new rss({
+        title: "Romain Bongibault - Projets",
+        description: "Découvrez les projets de Romain Bongibault",
+        language: "fr",
+        copyright: "Romain Bongibault",
+        feed_url: `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+        site_url: process.env.NEXT_PUBLIC_SITE_URL!,
+    });
+
+    const posts = getProjectPosts();
+
+    posts.forEach((post) => {
+        feed.item({
+            title: post.metadata.title,
+            description: post.metadata.description,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/projects/${post.slug}`,
+            date: post.metadata.publishedAt,
+        });
+    });
+
+    return feed.xml({ indent: true });
 }
