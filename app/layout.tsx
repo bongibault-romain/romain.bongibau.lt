@@ -34,11 +34,14 @@ export const metadata: Metadata = {
     noimageindex: false,
     noarchive: true,
   },
+  generator: "Unknown",
   alternates: {
     canonical: "/",
+    languages: {
+      fr: "/"
+    },
     types: {
       "application/rss+xml": "/projects.xml",
-      "application/atom+xml": "/projects.xml",
     },
   }
 };
