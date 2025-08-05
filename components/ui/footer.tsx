@@ -1,5 +1,6 @@
 import MdiEmail from "../icons/MdiEmail";
 import MdiGithub from "../icons/MdiGithub";
+import MdiLinkedin from "../icons/MdiLinkedin";
 import MdiRss from "../icons/MdiRss";
 
 export default function Footer() {
@@ -35,6 +36,16 @@ export default function Footer() {
               aria-label="RSS Feed"
             >
               <MdiRss className="fill-current" width={20} height={20} />
+            </a>
+          </li>
+          <li>
+            <a
+              className="w-8 h-8 rounded-full flex items-center justify-center bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600/[0.65] shadow-xs text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              href="https://www.linkedin.com/in/bongibault-romain/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <MdiLinkedin className="fill-current" width={20} height={20} />
             </a>
           </li>
         </ul>
