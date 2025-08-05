@@ -25,11 +25,13 @@
     "react-dom": "19.1.1",
     "rehype-pretty-code": "^0.14.1",
     "remark-gfm": "^4.0.1",
+    "rss": "^1.2.2",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.0.3",
+    "@types/rss": "^0.0.32",
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.3"
   }

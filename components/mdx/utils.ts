@@ -51,7 +51,7 @@ export function getProjectPosts() {
 
 export function generateSitemap(): MetadataRoute.Sitemap {
     const posts = getProjectPosts();
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
+    const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL!;
 
     return posts.map((post) => {
         return {
@@ -70,8 +70,8 @@ export function getProjectPostsRSSFeed() {
         description: "Découvrez les projets de Romain Bongibault",
         language: "fr",
         copyright: "Romain Bongibault",
-        feed_url: `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-        site_url: process.env.NEXT_PUBLIC_SITE_URL!,
+        feed_url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/feed.xml`,
+        site_url: process.env.NEXT_PUBLIC_WEBSITE_URL!,
     });
 
     const posts = getProjectPosts();
@@ -80,7 +80,7 @@ export function getProjectPostsRSSFeed() {
         feed.item({
             title: post.metadata.title,
             description: post.metadata.description,
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/projects/${post.slug}`,
+            url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects/${post.slug}`,
             date: post.metadata.publishedAt,
         });
     });
