@@ -72,7 +72,7 @@ export function getProjectPostsRSSFeed() {
         generator: "Unknown",
         pubDate: new Date().toUTCString(),
         ttl: 24 * 60,
-        copyright: "Romain Bongibault",
+        copyright: `Bongibault Romain, ${new Date().getFullYear()}. Tous droits réservés.`,
         feed_url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects.xml`,
         site_url: process.env.NEXT_PUBLIC_WEBSITE_URL!,
     });
