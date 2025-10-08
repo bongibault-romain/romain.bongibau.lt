@@ -30,6 +30,13 @@ export default function Certificates() {
       description:
       "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
     },
+    {
+      title: "Formation Complète Vue.js 3",
+      link: "https://www.udemy.com/certificate/UC-0069174d-fa63-4355-b717-234d3f0b9a27/",
+      icon: <Udemy />,
+      description:
+      "Formation complète à Vue.js 3 pour maîtriser la création d’interfaces réactives, d’applications web SPA et mobiles, avec apprentissage des composants, directives, gestion d’état (Vuex, Pinia)."
+    },
   ];
 
   return (
@@ -41,7 +48,7 @@ export default function Certificates() {
         {items.map((item, index) => (
           <article
             key={index}
-            className="relative p-5 rounded-xl odd:bg-linear-to-tr odd:from-gray-100 odd:to-gray-50 dark:odd:bg-linear-to-tr dark:odd:from-gray-800 dark:odd:to-gray-800/[0.65] group"
+            className="relative p-5 rounded-xl nth-[3n+1]:bg-linear-to-tr nth-[3n+1]:from-gray-100 nth-[3n+1]:to-gray-50 dark:nth-[3n+1]:bg-linear-to-tr dark:nth-[3n+1]:from-gray-800 dark:nth-[3n+1]:to-gray-800/[0.65] group"
           >
             <div
               className="absolute top-5 right-7 text-gray-400 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-400 group-hover:rotate-45 transition"
