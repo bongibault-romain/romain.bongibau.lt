@@ -2,68 +2,52 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const LexLau = () => (
-  <Image
-    src="/images/lexlau.png"
-    className="rounded-full"
-    alt="LexLau"
-    width={24}
-    height={24}
-  />
-);
+  <Image src="/images/lexlau.png" className="rounded-full" alt="LexLau" width={24} height={24} />
+)
 
 const Gerresheimer = () => (
-  <Image
-    src="/images/gerresheimer.jpg"
-    className="rounded-full"
-    alt="Gerresheimer"
-    width={24}
-    height={24}
-  />
-);
+  <Image src="/images/gerresheimer.jpg" className="rounded-full" alt="Gerresheimer" width={24} height={24} />
+)
 
 const Maloc = () => (
-  <Image
-    src="/images/maloc.png"
-    className="rounded-full"
-    alt="Maloc"
-    width={24}
-    height={24}
-  />
-);
+  <Image src="/images/maloc.png" className="rounded-full" alt="Maloc" width={24} height={24} />
+)
 
 export default function Experience() {
-  const t = useTranslations("components.experience");
+  console.log("Rendering Experience component");
+  const t = useTranslations('components.experience');
+  console.log("Experience translations loaded");
 
   const items = [
     {
-      title: t("lexlau.title"),
+      title: t('lexlau.title'),
       link: "https://lexlau.com",
       icon: <LexLau />,
-      date: t("lexlau.date"),
-      location: t("lexlau.location"),
-      description: t("lexlau.description"),
+      date: t('lexlau.date'),
+      location: t('lexlau.location'),
+      description: t('lexlau.description')
     },
     {
-      title: t("gerresheimer.title"),
+      title: t('gerresheimer.title'),
       link: "https://www.gerresheimer.com/en/company/locations/momignies-belgium",
       icon: <Gerresheimer />,
-      date: t("gerresheimer.date"),
-      location: t("gerresheimer.location"),
-      description: t("gerresheimer.description"),
+      date: t('gerresheimer.date'),
+      location: t('gerresheimer.location'),
+      description: t('gerresheimer.description')
     },
     {
-      title: t("maloc.title"),
+      title: t('maloc.title'),
       icon: <Maloc />,
-      date: t("maloc.date"),
-      location: t("maloc.location"),
-      description: t("maloc.description"),
+      date: t('maloc.date'),
+      location: t('maloc.location'),
+      description: t('maloc.description')
     },
   ];
 
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        {t("title")}
+        {t('title')}
       </h2>
       <div className="space-y-1">
         {items.map((item, index) => (
@@ -81,16 +65,12 @@ export default function Experience() {
                     {item.date}
                   </div>
                   <h3 className="font-semibold text-gray-800 dark:text-gray-100">
-                    {item.link ? (
-                      <a
-                        className="hover:underline decoration-2 decoration-gray-300 dark:decoration-gray-600 underline-offset-2"
-                        href={item.link}
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      item.title
-                    )}
+                    { item.link ? <a
+                      className="hover:underline decoration-2 decoration-gray-300 dark:decoration-gray-600 underline-offset-2"
+                      href={item.link}
+                    >
+                      {item.title}
+                    </a> : item.title }
                   </h3>
                   <div className="text-[13px] font-medium text-gray-600dark:text-gray-400">
                     {item.location}

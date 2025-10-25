@@ -1,1 +1,107 @@
-{}
+{
+  "rss": {
+    "title": "Romain Bongibault - Projects",
+    "description": "Discover Romain Bongibault’s projects",
+    "generator": "Unknown",
+    "copyright": "Bongibault Romain, {year}. All rights reserved."
+  },
+  "home": {
+    "metadata": {
+      "title": "Bongibault Romain - Portfolio",
+      "description": "Portfolio of Romain Bongibault, computer science student at INSA Toulouse. Discover my projects, articles, and experiences.",
+      "keywords": "portfolio, computer science, student, INSA Toulouse, projects, articles, experiences, recommendations, certificates, education"
+    }
+  },
+  "components": {
+    "header": {
+      "title": "Romain Bongibault",
+      "subtitle": "5<sup>th</sup> year Computer Science and Networks student at INSA Toulouse",
+      "availability": "Available for a final-year internship"
+    },
+    "footer": {
+      "copyright": "© Bongibault Romain, {year}. All rights reserved."
+    },
+    "projects": {
+      "title": "Projects"
+    },
+    "experience": {
+      "title": "Experience",
+      "lexlau": {
+        "title": "Full Stack Developer Intern",
+        "date": "June 2025 - August 2025",
+        "location": "LexLau, 1000 Brussels, Belgium",
+        "description": "Contributed to the development and optimization of a web CRM/CMS (Vue.js, .NET): added key features (file management, authentication, document generation), improved UI and performance, performed testing and maintenance in collaboration with the technical team."
+      },
+      "gerresheimer": {
+        "title": "Network Engineer Intern",
+        "date": "July 2024 - August 2024",
+        "location": "Gerresheimer, 6590 Momignies, Belgium",
+        "description": "Participated in optimizing the network infrastructure of an industrial site: conducted security audits and enhancements, configured and monitored network equipment, and managed a server rack (patching, organization, documentation)."
+      },
+      "maloc": {
+        "title": "Backend Developer",
+        "date": "July 2021 - August 2021",
+        "location": "Maloc, 76600 Le Havre, France",
+        "description": "Developed a robust REST API in Node.js with the AdonisJS framework: database modeling, authentication management, and creation of business endpoints. Worked closely with the Frontend team to ensure smooth feature integration and consistency between application layers."
+      }
+    },
+    "education": {
+      "title": "Education",
+      "insa": {
+        "title": "Engineering Degree in Computer Science and Networks",
+        "date": "2023 - 2026",
+        "location": "National Institute of Applied Sciences (INSA), 31400 Toulouse, France",
+        "description": "Program focused on software development, networking, algorithms, and cybersecurity. Strengthened skills in programming, applied mathematics, and technical project management."
+      },
+      "faidherbe": {
+        "title": "Preparatory Classes for Engineering Schools",
+        "date": "2021 - 2023",
+        "location": "Lycée Faidherbe, 59034 Lille, France",
+        "description": "Two intensive years consolidating my scientific foundations while developing a solid working method. This training helped me progress in logic, modeling, and computer science."
+      },
+      "isp": {
+        "title": "General Baccalaureate",
+        "date": "2018 - 2021",
+        "location": "Institution Saint Pierre, 59610 Fourmies, France",
+        "description": "Specializations: Mathematics, Physics-Chemistry, Biology – Advanced Math option. This path confirmed my interest in science and laid the groundwork for my engineering studies."
+      }
+    },
+    "certificates": {
+      "title": "Certifications",
+      "web": {
+        "title": "Web Developer Training",
+        "description": "Comprehensive web development training (HTML, CSS, JavaScript, PHP, MySQL, WordPress…) with practical projects: showcase site, blog, game, e-commerce, etc."
+      },
+      "toeic": {
+        "title": "TOEIC® Certification – 885 / 990",
+        "description": "Listening & Reading Test (INSA Toulouse, 2025) – Listening: 470 / Reading: 415 – Advanced level, valid until May 2027."
+      },
+      "java": {
+        "title": "Java Developer Training",
+        "description": "Comprehensive Java development training (Java 8 to 17) including 45 hands-on workshops, progressive project-based learning, and introduction to Java EE, Maven, and Spring Boot."
+      },
+      "vue": {
+        "title": "Complete Vue.js 3 Training",
+        "description": "Comprehensive Vue.js 3 course to master the creation of reactive interfaces, SPA and mobile web applications, with in-depth learning of components, directives, and state management (Vuex, Pinia)."
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "html-css": "Mastery of core web technologies, enabling the creation of interactive and responsive websites and applications.",
+      "javascript": "Use of JavaScript for web development with a strong focus on performance and user experience.",
+      "typescript": "Most of my projects are developed in TypeScript, allowing me to write more robust and maintainable code.",
+      "next-js": "Use of React and Next.js to develop modern, high-performance, and optimized web applications (such as this portfolio).",
+      "react": "Use of React to build modern and responsive user interfaces.",
+      "vue-js": "Use of Vue.js for building a collaborative CRM/CMS with attention to performance and user experience.",
+      "node-js": "Backend development with Node.js using frameworks like AdonisJS to create RESTful APIs.",
+      "sql": "Knowledge of relational databases (MySQL, PostgreSQL) for data management.",
+      "git": "Use of Git for version control, facilitating collaboration and project management.",
+      "linux": "Knowledge of Linux systems for application development and deployment.",
+      "python": "Use of Python for scripting, automation, and application development.",
+      "java": "Advanced knowledge of Java, developing object-oriented applications and Minecraft plugins with SpigotAPI.",
+      "api-rest": "Creation and consumption of REST APIs for integration between different applications.",
+      "php": "Experience in web development with PHP, especially for content management and web application projects.",
+      "c": "Basic knowledge of C, mainly for academic projects and programming exercises."
+    }
+  }
+}

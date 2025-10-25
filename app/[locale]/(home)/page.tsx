@@ -4,7 +4,9 @@ import Projects from "@/components/Projects";
 import Certificates from "@/components/Certficates";
 import { Metadata } from "next";
 import Skills from "@/components/Skills";
-import { getTranslations } from "next-intl/server";
+import { use } from "react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -12,6 +14,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  console.log("Generating metadata for locale:", locale);
   const t = await getTranslations({ locale, namespace: "home.metadata" });
 
   return {
@@ -26,7 +29,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
+export default function Home({ params }: Props) {
+  const {locale} = use(params);
+ 
+  // Enable static rendering
+  setRequestLocale(locale);
+ 
+  // Once the request locale is set, you
+  // can call hooks from `next-intl`
+  const t = useTranslations('components.skills');
+  
   return (
     <>
       <Experience />
@@ -35,7 +47,6 @@ export default async function Home() {
       <Education />
       <Certificates />
       <Skills />
-      {/* <Articles /> */}
     </>
   );
 }

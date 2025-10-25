@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { locale: string } }
+  { params }: { params: Promise<{ locale: string }> }
 ) {
-  const rss = getProjectPostsRSSFeed(params.locale);
+  const { locale } = await params;
+
+  const rss = await getProjectPostsRSSFeed(locale);
 
   return new NextResponse(rss, {
     status: 200,

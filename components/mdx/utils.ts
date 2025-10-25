@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { MetadataRoute } from "next";
+import { getTranslations } from "next-intl/server";
 import path from "path";
 import rss from 'rss';
 
@@ -64,15 +65,17 @@ export function generateSitemap(locale: string): MetadataRoute.Sitemap {
     })
 }
 
-export function getProjectPostsRSSFeed(locale: string) {
+export async function getProjectPostsRSSFeed(locale: string) {
+    const t = await getTranslations({ locale, namespace: "rss" });
+
     const feed = new rss({
-        title: "Romain Bongibault - Projets",
-        description: "Découvrez les projets de Romain Bongibault",
+        title: t("title"),
+        description: t("description"),
         language: locale,
-        generator: "Unknown",
+        generator: t("generator"),
         pubDate: new Date().toUTCString(),
         ttl: 24 * 60,
-        copyright: `Bongibault Romain, ${new Date().getFullYear()}. Tous droits réservés.`,
+        copyright: t("copyright", { year: new Date().getFullYear() }),
         feed_url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/projects.xml`,
         site_url: process.env.NEXT_PUBLIC_WEBSITE_URL!,
     });

@@ -15,4 +15,4 @@ const withMDX = createMDX({
 const withNextIntl = createNextIntlPlugin();
 
 // Combine MDX and Next.js config
-export default withMDX(withNextIntl(nextConfig));
+export default withNextIntl(withMDX(nextConfig));
