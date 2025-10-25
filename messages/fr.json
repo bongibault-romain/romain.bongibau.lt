@@ -8,12 +8,15 @@
   },
   "components": {
     "header": {
-        "title": "Romain Bongibault",
-        "subtitle": "Étudiant en 5<sup>ème</sup> année en Informatique et Réseaux à l'INSA Toulouse",
-        "availability": "Disponible pour un stage de fin d'études"
+      "title": "Romain Bongibault",
+      "subtitle": "Étudiant en 5<sup>ème</sup> année en Informatique et Réseaux à l'INSA Toulouse",
+      "availability": "Disponible pour un stage de fin d'études"
     },
     "footer": {
-        "copyright": "© Bongibault Romain, {year}. Tous droits réservés."
+      "copyright": "© Bongibault Romain, {year}. Tous droits réservés."
+    },
+    "projects": {
+      "title": "Projets"
     },
     "experience": {
       "title": "Expérience",
@@ -56,6 +59,43 @@
         "location": "Institution Saint Pierre, 59610 Fourmies, France",
         "description": "Spécialités : Mathématiques, Physique-Chimie, SVT - Option Mathématiques expertes. Ce parcours a confirmé mon intérêt pour les sciences et préparé le terrain pour mes études d'ingénieur."
       }
+    },
+    "certificates": {
+      "title": "Certifications",
+      "web": {
+        "title": "Formation de Développeur Web",
+        "description": " Formation complète au développement web (HTML, CSS, JavaScript, PHP, MySQL, WordPress…) avec réalisation de projets concrets : site vitrine, blog, jeu, e-commerce, etc."
+      },
+      "toeic": {
+        "title": "Certification TOEIC® - 885 / 990",
+        "description": "Test Listening & Reading (INSA Toulouse, 2025) - Listening : 470 / Reading : 415 - Niveau avancé, score valide jusqu'en mai 2027."
+      },
+      "java": {
+        "title": "Formation Développeur Java",
+        "description": "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
+      },
+      "vue": {
+        "title": "Formation Complète Vue.js 3",
+        "description": "Formation complète à Vue.js 3 pour maîtriser la création d'interfaces réactives, d'applications web SPA et mobiles, avec apprentissage des composants, directives, gestion d'état (Vuex, Pinia)."
+      }
+    },
+    "skills": {
+      "title": "Compétences",
+      "html-css": "Maîtrise des technologies fondamentales du web, permettant de créer des sites et applications interactives et responsives.",
+      "javascript": "Utilisation de JavaScript pour le développement web, avec une attention particulière à la performance et à l'expérience utilisateur.",
+      "typescript": "La majorité de mes projets sont développés en TypeScript, ce qui me permet d'écrire du code plus robuste et maintenable.",
+      "next-js": "Utilisation de React et Next.js pour développer des applications web modernes, performantes et optimisées (comme ce portfolio).",
+      "react": "Utilisation de React pour développer des interfaces utilisateur modernes et réactives.",
+      "vue-js": "Utilisation de Vue.js pour la création d'un CRM/CMS collaboratif, avec une attention particulière à la performance et à l'expérience utilisateur.",
+      "node-js": "Développement d'applications backend avec Node.js, en utilisant des frameworks comme Adonis.JS pour créer des API RESTful.",
+      "sql": "Connaissance des bases de données relationnelles (MySQL, PostgreSQL) pour la gestion des données.",
+      "git": "Utilisation de Git pour le contrôle de version, facilitant la collaboration et la gestion des projets.",
+      "linux": "Connaissance des systèmes Linux pour le développement et le déploiement d'applications.",
+      "python": "Utilisation de Python pour des scripts, l'automatisation et le développement d'applications.",
+      "java": "Connaissances avancées en Java, développement d'applications orientées objet et de plugins Minecraft avec SpigotAPI.",
+      "api-rest": "Création et consommation d'API REST pour l'intégration entre différentes applications.",
+      "php": "Expérience en développement web avec PHP, notamment pour des projets de gestion de contenu et d'applications web.",
+      "c": "Connaissances de base en C, principalement pour des projets académiques et des exercices de programmation."
     }
   }
 }

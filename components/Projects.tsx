@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from 'next/link';
 import { getProjectPosts } from './mdx/utils';
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 export default async function Projects() {
   const items = getProjectPosts();
+  const t = await getTranslations('components.projects');
 
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        Projets
+        {t("title")}
       </h2>
       <div className="grid min-[580px]:grid-cols-2 gap-4 group">
         {items.map((item, index) => (

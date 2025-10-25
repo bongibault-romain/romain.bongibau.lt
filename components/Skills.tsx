@@ -1,94 +1,97 @@
+import { useTranslations } from "next-intl";
+
 export default function Skills() {
+  const t = useTranslations("components.skills");
     // html, css, js, typescript, react, nextjs, nodejs, mysql, postgresql, git, linux,
     // python, java, php, rest api
   const items = [
     {
         title: 'HTML - CSS',
-        description: `Maîtrise des technologies fondamentales du web, permettant de créer des sites et applications interactives et responsives.`,
+        description: t("html-css"),
         rating: 4,
         image: '/images/skills/html.png',
     },
     {
         title: 'JavaScript',
-        description: `Utilisation de JavaScript pour le développement web, avec une attention particulière à la performance et à l'expérience utilisateur.`,
+        description: t("javascript"),
         rating: 4,
         image: '/images/skills/javascript.png',
     },
     {
         title: 'TypeScript',
-        description: `La majorité de mes projets sont développés en TypeScript, ce qui me permet d'écrire du code plus robuste et maintenable.`,
+        description: t("typescript"),
         rating: 4,
         image: '/images/skills/typescript.png',
     },
     {
         title: 'Next.js',
-        description: `Utilisation de React et Next.js pour développer des applications web modernes, performantes et optimisées (comme ce portfolio).`,
+        description: t("next-js"),
         rating: 4,
         image: '/images/skills/nextjs.png',
     },
     {
         title: 'React',
-        description: `Utilisation de React pour développer des interfaces utilisateur modernes et réactives.`,
+        description: t("react"),
         rating: 4,
         image: '/images/skills/react.png',
     },
     {
         title: 'Vue.js',
-        description: `Utilisation de Vue.js pour la création d'un CRM/CMS collaboratif, avec une attention particulière à la performance et à l'expérience utilisateur.`,
+        description: t("vue-js"),
         rating: 3,
         image: '/images/skills/vuejs.png',
     },
     {
         title: 'Node.js',
-        description: `Développement d'applications backend avec Node.js, en utilisant des frameworks comme Adonis.JS pour créer des API RESTful.`,
+        description: t("node-js"),
         rating: 4,
         image: '/images/skills/nodejs.png',
     },
     {
-        title: 'Bases de données',
-        description: `Connaissance des bases de données relationnelles (MySQL, PostgreSQL) pour la gestion des données.`,
+        title: 'SQL',
+        description: t("sql"),
         rating: 4,
         image: '/images/skills/sql.png',
     },
     {
         title: 'Git',
-        description: `Utilisation de Git pour le contrôle de version, facilitant la collaboration et la gestion des projets.`,
+        description: t("git"),
         rating: 4,
         image: '/images/skills/git.png',
     },
     {
         title: 'Linux',
-        description: `Connaissance des systèmes Linux pour le développement et le déploiement d'applications.`,
+        description: t("linux"),
         rating: 4,
         image: '/images/skills/linux.png',
     },
     {
         title: 'Python',
-        description: `Utilisation de Python pour des scripts, l'automatisation et le développement d'applications.`,
+        description: t("python"),
         rating: 3,
         image: '/images/skills/python.png',
     },
     {
         title: 'Java',
-        description: `Connaissances avancées en Java, développement d'applications orientées objet et de plugins Minecraft avec SpigotAPI.`,
+        description: t("java"),
         rating: 3,
         image: '/images/skills/java.png',
     },
     {
         title: 'API REST',
-        description: `Création et consommation d'API REST pour l'intégration entre différentes applications.`,
+        description: t("api-rest"),
         rating: 4,
         image: '/images/skills/api.png',
     },
     {
         title: 'PHP',
-        description: `Expérience en développement web avec PHP, notamment pour des projets de gestion de contenu et d'applications web.`,
+        description: t("php"),
         rating: 3,
         image: '/images/skills/php.png',
     },
     {
         title: 'C',
-        description: `Connaissances de base en C, principalement pour des projets académiques et des exercices de programmation.`,
+        description: t("c"),
         rating: 2,
         image: '/images/skills/c.png',
     }
@@ -97,7 +100,7 @@ export default function Skills() {
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        Compétences
+        {t("title")}
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

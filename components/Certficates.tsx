@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const Udemy = () => (
@@ -9,40 +10,39 @@ const TOEIC = () => (
 )
 
 export default function Certificates() {
+  const t = useTranslations("components.certificates");
+
   const items = [
     {
-      title: "Formation de Développeur Web",
+      title: t("web.title"),
       link: "https://www.udemy.com/certificate/UC-0DUYDEHI/",
       icon: <Udemy />,
-      description: 
-      " Formation complète au développement web (HTML, CSS, JavaScript, PHP, MySQL, WordPress…) avec réalisation de projets concrets : site vitrine, blog, jeu, e-commerce, etc."
+      description: t("web.description")
     },
     {
-      title: "Certification TOEIC® - 885 / 990",
+      title: t("toeic.title"),
       link: "https://www.etsglobal.org/fr/en/digital-score-report/7ED332706994A01B08CF92F743173D057AAEF9E1DD1DEFE929C195A1A74D1F15Y2Ric3FWNU9UbytCWlo2VW1sQzZjZlJKelBFdzk2V092YjBUdFNoWXpQcjdCVHM5",
       icon: <TOEIC />,
-      description: "Test Listening & Reading (INSA Toulouse, 2025) - Listening : 470 / Reading : 415 - Niveau avancé, score valide jusqu'en mai 2027."
+      description: t("toeic.description")
     },
     {
-      title: "Formation Développeur Java",
+      title: t("java.title"),
       link: "https://www.udemy.com/certificate/UC-d5545f09-c9e6-4682-9ec3-cbd8861be0ea/",
       icon: <Udemy />,
-      description:
-      "Formation complète au développement Java (Java 8 à 17) incluant 45 ateliers pratiques, apprentissage progressif des fondamentaux orienté projet, avec introduction à Java EE, Maven et Spring Boot."
+      description: t("java.description")
     },
     {
-      title: "Formation Complète Vue.js 3",
+      title: t("vue.title"),
       link: "https://www.udemy.com/certificate/UC-0069174d-fa63-4355-b717-234d3f0b9a27/",
       icon: <Udemy />,
-      description:
-      "Formation complète à Vue.js 3 pour maîtriser la création d’interfaces réactives, d’applications web SPA et mobiles, avec apprentissage des composants, directives, gestion d’état (Vuex, Pinia)."
+      description: t("vue.description")
     },
   ];
 
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        Certifications
+        {t("title")}
       </h2>
       <div className="grid min-[580px]:grid-cols-2 gap-4">
         {items.map((item, index) => (
