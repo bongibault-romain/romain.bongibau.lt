@@ -1,51 +1,69 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const LexLau = () => (
-  <Image src="/images/lexlau.png" className="rounded-full" alt="LexLau" width={24} height={24} />
-)
+  <Image
+    src="/images/lexlau.png"
+    className="rounded-full"
+    alt="LexLau"
+    width={24}
+    height={24}
+  />
+);
 
 const Gerresheimer = () => (
-  <Image src="/images/gerresheimer.jpg" className="rounded-full" alt="Gerresheimer" width={24} height={24} />
-)
+  <Image
+    src="/images/gerresheimer.jpg"
+    className="rounded-full"
+    alt="Gerresheimer"
+    width={24}
+    height={24}
+  />
+);
 
 const Maloc = () => (
-  <Image src="/images/maloc.png" className="rounded-full" alt="Maloc" width={24} height={24} />
-)
+  <Image
+    src="/images/maloc.png"
+    className="rounded-full"
+    alt="Maloc"
+    width={24}
+    height={24}
+  />
+);
 
 export default function Experience() {
+  const t = useTranslations("components.experience");
+
   const items = [
     {
-      title: "Stagiaire Développeur Full Stack",
+      title: t("lexlau.title"),
       link: "https://lexlau.com",
       icon: <LexLau />,
-      date: "Juin 2025 - Août 2025",
-      location: "LexLau, 1000 Bruxelles, Belgique",
-      description:
-      "Contribution au développement et à l'optimisation d'un CRM/CMS web (Vue.js, .NET) : ajout de fonctionnalités clés (gestion de dossiers, authentification, génération de documents), amélioration de l'interface utilisateur et des performances, tests et maintenance en collaboration avec l'équipe technique."
+      date: t("lexlau.date"),
+      location: t("lexlau.location"),
+      description: t("lexlau.description"),
     },
     {
-      title: "Stagiaire Ingénieur Réseau",
+      title: t("gerresheimer.title"),
       link: "https://www.gerresheimer.com/en/company/locations/momignies-belgium",
       icon: <Gerresheimer />,
-      date: "Juillet 2024 - Août 2024",
-      location: "Gerresheimer, 6590 Momignies, Belgique",
-      description:
-      "Participation à l'optimisation des infrastructures réseau d'un site industriel : audit et renforcement de la sécurité, configuration et supervision d'équipements réseau, gestion proactive d'une baie de serveurs (patching, organisation, documentation)"
+      date: t("gerresheimer.date"),
+      location: t("gerresheimer.location"),
+      description: t("gerresheimer.description"),
     },
     {
-      title: "Développeur Backend",
+      title: t("maloc.title"),
       icon: <Maloc />,
-      date: "Juillet 2021 - Août 2021",
-      location: "Maloc, 76600 Le Havre, France",
-      description:
-      "Développement d'une API REST robuste en Node.js avec le framework AdonisJS : modélisation de la base de données, gestion de l'authentification, création des endpoints métiers. Travail en collaboration étroite avec l'équipe Frontend pour assurer l'intégration fluide des fonctionnalités et la cohérence entre les couches applicatives."
+      date: t("maloc.date"),
+      location: t("maloc.location"),
+      description: t("maloc.description"),
     },
   ];
 
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        Expérience
+        {t("title")}
       </h2>
       <div className="space-y-1">
         {items.map((item, index) => (
@@ -63,12 +81,16 @@ export default function Experience() {
                     {item.date}
                   </div>
                   <h3 className="font-semibold text-gray-800 dark:text-gray-100">
-                    { item.link ? <a
-                      className="hover:underline decoration-2 decoration-gray-300 dark:decoration-gray-600 underline-offset-2"
-                      href={item.link}
-                    >
-                      {item.title}
-                    </a> : item.title }
+                    {item.link ? (
+                      <a
+                        className="hover:underline decoration-2 decoration-gray-300 dark:decoration-gray-600 underline-offset-2"
+                        href={item.link}
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      item.title
+                    )}
                   </h3>
                   <div className="text-[13px] font-medium text-gray-600dark:text-gray-400">
                     {item.location}

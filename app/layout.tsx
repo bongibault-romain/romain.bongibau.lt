@@ -3,6 +3,7 @@ import "./css/style.css";
 import { Inter, Inter_Tight } from "next/font/google";
 import Theme from "./theme-provider";
 import { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
       url: "https://romain.bongibau.lt",
     },
   ],
-  icons: '/favicon.ico',
+  icons: "/favicon.ico",
   robots: {
     index: true,
     follow: true,
@@ -38,12 +39,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: {
-      fr: "/"
+      fr: "/",
     },
     types: {
       "application/rss+xml": "/projects.xml",
     },
-  }
+  },
 };
 
 export default function RootLayout({
@@ -57,19 +58,19 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${inter_tight.variable} font-inter antialiased bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 tracking-tight`}
       >
-        <Theme>
-          <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
-            <div className="max-w-[728px] mx-auto">
-              <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
-                <div className="px-3 md:px-16">
-                  <div className="flex flex-col min-h-screen">
-                    {children}
+        <NextIntlClientProvider>
+          <Theme>
+            <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
+              <div className="max-w-[728px] mx-auto">
+                <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
+                  <div className="px-3 md:px-16">
+                    <div className="flex flex-col min-h-screen">{children}</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Theme>
+          </Theme>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

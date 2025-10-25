@@ -1,5 +1,6 @@
 import Footer from "@/components/ui/footer";
 import HomeHeader from "@/components/ui/home-header";
+import { useTranslations } from "next-intl";
 
 export default function HomeLayout({
   children,

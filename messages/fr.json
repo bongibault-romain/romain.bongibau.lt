@@ -1,0 +1,32 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Bongibault Romain - Portfolio",
+      "description": "Portfolio de Romain Bongibault, étudiant en informatique à l'INSA Toulouse. Découvrez mes projets, articles et expériences.",
+      "keywords": "portfolio, informatique, étudiant, INSA Toulouse, projets, articles, expériences, recommandations, certificats, éducation"
+    }
+  },
+  "components": {
+    "experience": {
+      "title": "Expérience",
+      "lexlau": {
+        "title": "Stagiaire Développeur Full Stack",
+        "date": "Juin 2025 - Août 2025",
+        "location": "LexLau, 1000 Bruxelles, Belgique",
+        "description": "Contribution au développement et à l'optimisation d'un CRM/CMS web (Vue.js, .NET) : ajout de fonctionnalités clés (gestion de dossiers, authentification, génération de documents), amélioration de l'interface utilisateur et des performances, tests et maintenance en collaboration avec l'équipe technique."
+      },
+      "gerresheimer": {
+        "title": "Stagiaire Ingénieur Réseau",
+        "date": "Juillet 2024 - Août 2024",
+        "location": "Gerresheimer, 6590 Momignies, Belgique",
+        "description": "Participation à l'optimisation des infrastructures réseau d'un site industriel : audit et renforcement de la sécurité, configuration et supervision d'équipements réseau, gestion proactive d'une baie de serveurs (patching, organisation, documentation)"
+      },
+      "maloc": {
+        "title": "Développeur Backend",
+        "date": "Juillet 2021 - Août 2021",
+        "location": "Maloc, 76600 Le Havre, France",
+        "description": "Développement d'une API REST robuste en Node.js avec le framework AdonisJS : modélisation de la base de données, gestion de l'authentification, création des endpoints métiers. Travail en collaboration étroite avec l'équipe Frontend pour assurer l'intégration fluide des fonctionnalités et la cohérence entre les couches applicatives."
+      }
+    }
+  }
+}
