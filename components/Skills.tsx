@@ -1,12 +1,8 @@
 import { useTranslations } from "next-intl";
 
 export default function Skills() {
-  console.log("Rendering Skills component");
   const t = useTranslations("components.skills");
-  console.log("Skills translations loaded");
-  // html, css, js, typescript, react, nextjs, nodejs, mysql, postgresql, git, linux,
-  // python, java, php, rest api
-
+  
   const items = [
     {
       title: "HTML - CSS",

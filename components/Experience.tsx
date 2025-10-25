@@ -14,9 +14,7 @@ const Maloc = () => (
 )
 
 export default function Experience() {
-  console.log("Rendering Experience component");
   const t = useTranslations('components.experience');
-  console.log("Experience translations loaded");
 
   const items = [
     {

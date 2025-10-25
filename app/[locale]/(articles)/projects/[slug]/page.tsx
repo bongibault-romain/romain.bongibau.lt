@@ -77,7 +77,6 @@ export async function generateMetadata({
   params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
   const { slug, locale } = await params;
-  console.log("locale in project page", locale);
   const project = getProjectPosts(locale).find((p) => p.slug === slug);
 
   return {
