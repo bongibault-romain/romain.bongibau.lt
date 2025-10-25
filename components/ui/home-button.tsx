@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/naviguation";
 import MdiHome from "../icons/MdiHome";
 
 export default function HomeButton() {

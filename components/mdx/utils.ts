@@ -45,17 +45,17 @@ function getMDXData(dir: string) {
     });
 }
 
-export function getProjectPosts() {
-    return getMDXData(path.join(process.cwd(), "content/projects"));
+export function getProjectPosts(locale: string) {
+    return getMDXData(path.join(process.cwd(), "content/projects/" + locale));
 }
 
-export function generateSitemap(): MetadataRoute.Sitemap {
-    const posts = getProjectPosts();
+export function generateSitemap(locale: string): MetadataRoute.Sitemap {
+    const posts = getProjectPosts(locale);
     const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL!;
 
     return posts.map((post) => {
         return {
-            url: `${siteUrl}/projects/${post.slug}`,
+            url: `${siteUrl}/${locale}/projects/${post.slug}`,
             lastModified: post.metadata.publishedAt,
             changeFrequency: "weekly",
             priority: 0.5,
@@ -64,11 +64,11 @@ export function generateSitemap(): MetadataRoute.Sitemap {
     })
 }
 
-export function getProjectPostsRSSFeed() {
+export function getProjectPostsRSSFeed(locale: string) {
     const feed = new rss({
         title: "Romain Bongibault - Projets",
         description: "Découvrez les projets de Romain Bongibault",
-        language: "fr",
+        language: locale,
         generator: "Unknown",
         pubDate: new Date().toUTCString(),
         ttl: 24 * 60,
@@ -77,7 +77,7 @@ export function getProjectPostsRSSFeed() {
         site_url: process.env.NEXT_PUBLIC_WEBSITE_URL!,
     });
 
-    const posts = getProjectPosts();
+    const posts = getProjectPosts(locale);
 
     posts.forEach((post) => {
         feed.item({

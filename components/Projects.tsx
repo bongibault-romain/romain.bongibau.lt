@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Link from 'next/link';
 import { getProjectPosts } from './mdx/utils';
-import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/naviguation";
 
 export default async function Projects() {
-  const items = getProjectPosts();
   const t = await getTranslations('components.projects');
+  const locale = await getLocale();
+  const items = getProjectPosts(locale);
 
   return (
     <section>

@@ -1,0 +1,121 @@
+---
+title: "From Compilation to Execution: Designing a Complete System (Compiler + Processor)"
+description: "Discover how we designed a compiler from A to Z, from high-level language to execution on a pipelined processor. A complete computer science project."
+publishedAt: '2025-08-01T21:13:35+00:00'
+image: 
+    path: '/images/projects/compilateur-cross-compilateur-pipeline/thumbnail.jpg'
+    width: 3888
+    height: 2592
+keywords: 
+    - compiler
+    - assembler
+    - YACC
+    - LEX
+    - pipeline
+    - cross-compilation
+    - processor architecture
+    - computer science project
+    - student portfolio
+authors:
+  - name: 'Romain Bongibault'
+    url: 'https://romain.bongibau.lt'
+    avatar: '/images/me.png'
+  - name: 'Elsa Hindi'
+    avatar: '/images/people/elsa.jpg'
+---
+
+As part of an engineering project, we had the opportunity to design an end-to-end computer system: from defining a high-level source language to its simulated execution on a pipelined processor. This project allowed us to explore all layers of system computing: compilation, assembly, hardware architecture, memory management, instruction execution, and even data hazard detection.
+
+## Project Objective
+
+Our work was based on two main pillars:
+
+1. Create a compiler translating a C-like language into memory-oriented assembly.
+2. Design a processor capable of executing register-oriented assembly code via a pipeline architecture.
+
+Between these two worlds, we also developed a **cross-compiler** and an **interpreter**, which allowed us to chain all transformation stages of a program.
+
+<Image width="1190" height="722" alt="Architecture diagram" caption="Fig. 1 - Architecture diagram showing the 4 blocks (compiler → memory assembly → register → execution)" src="/images/projects/compilateur-cross-compilateur-pipeline/architecture.png" />
+
+## Part I - Compiler Design (LEX/YACC)
+
+The source language is deliberately simple but close to C: it includes `int` and `bool` types, conditions, loops (`for`, `while`, `do-while`), and most common operators.
+
+Great attention was paid to intermediate code optimization, particularly in temporary variable management.
+
+| C Example                  | Unoptimized Code                        | Optimized Code                         |
+|----------------------------|-----------------------------------------|----------------------------------------|
+| `int a = 2;`               | `MOVi 0 2`<br />`MOV 1 0 // @a = 1`       | `MOVi 0 2 // @a = 0`                   |
+| `int a = 2 + 2;`           | `MOVi 0 2`<br />`MOVi 1 2`<br />`ADD 2 0 1` | `MOVi 0 2`<br />`MOVi 1 2`<br />`ADD 0 0 1`|
+| `bool a = (4+5) <= (10-1)`| ...                                    | `LE 0 0 1 // @a = 0`                   |
+
+The `if/else`, `for`, and `while` blocks are managed with temporary addresses that the compiler fills dynamically after parsing, ensuring smooth execution without erroneous jumps.
+
+## Part II - Memory-Oriented Assembler & Interpreter
+
+The compiler output format follows a fixed structure `OP @A @B @C`, with each instruction encoded on 32 bits. Here are the most commonly used instructions:
+
+| Category         | Available Instructions                                                   |
+|------------------|--------------------------------------------------------------------------|
+| Arithmetic       | `ADD`, `SUB`, `MUL`, `DIV`, `MOD`                                       |
+| Logical          | `AND`, `OR`, `NOT`                                                      |
+| Comparators      | `EQ`, `NEQ`, `LT`, `LE`, `GT`, `GE`                                     |
+| Flow Control     | `JMP`, `JMPZ`, `JMPNZ`, `CALL`, `RET`                                   |
+| Miscellaneous    | `MOV`, `MOVi`, `PRI`, `INCO`, `DECO`                                    |
+
+The interpreter executes this assembly code line by line by simulating memory, an instruction pointer, and classic processing operations.
+
+## Part III - Pipelined Processor Design
+
+We developed a 5-stage architecture: Fetch, Decode, Execute, Memory, and Write Back. Each stage is implemented modularly, with fine-grained register conflict management.
+
+Among the key components:
+
+- The ALU performs all operations, taking into account the `Z`, `N`, `O`, `C` flags.
+- The ROM contains instructions to execute.
+- The RAM allows temporary storage.
+- A bank of 16 registers stores 8-bit data.
+- The `data_hazards_manager` detects concurrent register reads and inserts NOPs when necessary.
+
+<Image width="1652" height="610" alt="Our processor architecture" caption="Fig. 2 - Our processor architecture, without conflict management" src="/images/projects/compilateur-cross-compilateur-pipeline/pipeline.png" />
+
+## Part IV - Cross-compilation (memory → register)
+
+The initial compiler generates memory-oriented code. To execute this code on our register-oriented processor, we designed a **Python cross-compiler**.
+
+The principle: replace each memory instruction with an equivalent register sequence, inserting load and store instructions.
+
+| Memory Code              | Equivalent Register Code                           |
+|--------------------------|----------------------------------------------------|
+| `ADD @A @B @C`           | `LDR 0 @B`<br />`LDR 1 @C`<br />`ADD 1 1 0`<br />`STR @A 1` |
+
+This mechanism allows automatic transformation of any code generated by our compiler into a program executable on the processor.
+
+## Part V - Final Integration and Testing
+
+After modular component development, we validated the complete integration:
+
+- Compilation of a source program to memory assembly
+- Transformation by the cross-compiler to register assembly
+- Code execution on the pipeline simulator
+
+Each step produces an output file that becomes the input for the next step, enabling a reliable compilation chain.
+
+## Conclusion
+
+This project was an intense and formative experience. It allowed us to touch both software layers (lexical, syntactic, semantic analysis, code generation) and hardware layers (architecture, execution, pipeline, registers).
+
+We gained key skills:
+
+- Language design with LEX/YACC
+- Optimized and structured code generation
+- Pipeline simulation and data hazard management
+- Transformation from memory to register architectures
+
+This work reflects our ability to design, code, test, and integrate complex systems.
+
+## Acknowledgments
+
+We thank our supervisors for their support throughout the project. The work presented here was entirely carried out by our team, from compiler to processor, with rigor and passion.
+
+You can find the complete source code for this project on our [GitHub](https://github.com/bongibault-romain/systeme-informatique)

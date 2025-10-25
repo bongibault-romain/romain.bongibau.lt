@@ -3,17 +3,15 @@ import { getProjectPosts } from "@/components/mdx/utils";
 import PostDate from "@/components/PostDate";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug } = await params;
-
-  const project = getProjectPosts().find((p) => p.slug === slug);
+  const { slug, locale } = await params;
+  const project = getProjectPosts(locale).find((p) => p.slug === slug);
 
   if (!project) {
     return notFound();
@@ -23,16 +21,15 @@ export default async function Page({
     <>
       {/* Section header */}
       <header className="pb-8">
-
-      {project.metadata.image && (
-        <Image
-          alt={project.metadata.title}
-          src={project.metadata.image.path}
-          className="rounded-xl w-full mb-5"
-          width={project.metadata.image.width}
-          height={project.metadata.image.height}
-        />
-      )}
+        {project.metadata.image && (
+          <Image
+            alt={project.metadata.title}
+            src={project.metadata.image.path}
+            className="rounded-xl w-full mb-5"
+            width={project.metadata.image.width}
+            height={project.metadata.image.height}
+          />
+        )}
 
         <h1 className="mb-5 text-4xl font-bold">{project.metadata.title}</h1>
         <div className="flex items-center gap-3">
@@ -77,10 +74,11 @@ export default async function Page({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProjectPosts().find((p) => p.slug === slug);
+  const { slug, locale } = await params;
+  console.log("locale in project page", locale);
+  const project = getProjectPosts(locale).find((p) => p.slug === slug);
 
   return {
     title: project?.metadata?.title,
@@ -99,8 +97,12 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  return getProjectPosts().map((p) => ({ slug: p.slug }));
+export async function generateStaticParams({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  return getProjectPosts(locale).map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;
