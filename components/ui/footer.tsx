@@ -1,9 +1,12 @@
+import { useTranslations } from "next-intl";
 import MdiEmail from "../icons/MdiEmail";
 import MdiGithub from "../icons/MdiGithub";
 import MdiLinkedin from "../icons/MdiLinkedin";
 import MdiRss from "../icons/MdiRss";
 
 export default function Footer() {
+  const t = useTranslations("components.footer");
+
   return (
     <footer className="space-y-12 text-center pb-16">
       <div className="space-y-6">
@@ -51,7 +54,9 @@ export default function Footer() {
         </ul>
         {/* Copyright notes */}
         <p className="text-sm text-gray-400 dark:text-gray-600">
-          &copy; Bongibault Romain, {new Date().getFullYear()}. Tous droits réservés.
+          {t.rich("copyright", {
+            year: new Date().getFullYear(),
+          })}
         </p>
       </div>
     </footer>
