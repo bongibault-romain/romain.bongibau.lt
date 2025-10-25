@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 
@@ -14,40 +15,39 @@ const ISP = () => (
 )
 
 export default function Education() {
+  const t = useTranslations("components.education");
+
   const items = [
     {
-      title: "Diplôme d'ingénieur en informatique et réseaux",
+      title: t("insa.title"),
       link: "https://www.insa-toulouse.fr/formation/ingenieur-specialite-informatique-et-reseaux/",
       icon: <INSA />,
-      date: "2023 - 2026",
-      location: "Institut National des Sciences Appliquées, 31400 Toulouse, France",
-      description:
-      "Formation axée sur le développement logiciel, les réseaux, l'algorithmique et la cybersécurité. J'y ai renforcé mes compétences en programmation, en mathématiques appliquées et en gestion de projets techniques."
+      date: t("insa.date"),
+      location: t("insa.location"),
+      description: t("insa.description"),
     },
     {
-      title: "Classe Préparatoire Aux Grandes Ecoles",
+      title: t("faidherbe.title"),
       link: "https://www.faidherbe.org/",
       icon: <Faidherbe />,
-      date: "2021 - 2023",
-      location: "Lycée Faidherbe, 59034 Lille, France",
-      description: 
-      "Deux années intenses où j'ai consolidé mes bases scientifiques tout en développant une solide méthode de travail. Cette formation m'a permis de progresser en logique, en modélisation et en informatique."
+      date: t("faidherbe.date"),
+      location: t("faidherbe.location"),
+      description: t("faidherbe.description"),
     },
     {
-      title: "Baccalauréat Général",
+      title: t("isp.title"),
       link: "https://www.ispfourmies.com/",
       icon: <ISP />,
-      date: "2018 - 2021",
-      location: "Institution Saint Pierre, 59610 Fourmies, France",
-      description:
-      "Spécialités : Mathématiques, Physique-Chimie, SVT - Option Mathématiques expertes. Ce parcours a confirmé mon intérêt pour les sciences et préparé le terrain pour mes études d'ingénieur."
+      date: t("isp.date"),
+      location: t("isp.location"),
+      description: t("isp.description"),
     },
   ];
 
   return (
     <section>
       <h2 className="font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 mb-6">
-        Éducation
+        {t("title")}
       </h2>
       <div className="space-y-1">
         {items.map((item, index) => (
