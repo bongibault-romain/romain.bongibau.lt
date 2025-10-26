@@ -5,14 +5,21 @@ import HeaderImg01 from "@/public/images/header-image-01.jpg";
 import HeaderImg02 from "@/public/images/header-image-02.jpg";
 import HeaderImg03 from "@/public/images/header-image-03.jpg";
 import { useTranslations } from "next-intl";
+import LanguageSelector from "../LanguageSelector";
 
 export default function HomeHeader() {
   const t = useTranslations("components.header");
 
   return (
     <header className="text-center pt-6">
+
+      <div className="flex justify-between items-center">
+      <LanguageSelector />
+
       {/* Dark mode toggle */}
       <ThemeToggle />
+      </div>
+      
       {/* Intro */}
       <div className="mb-10">
         <Image

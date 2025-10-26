@@ -3,6 +3,7 @@ import Image from "next/image";
 import UserImg from "@/public/images/me.png";
 import HomeButton from "./home-button";
 import { useTranslations } from "next-intl";
+import LanguageSelector from "../LanguageSelector";
 
 export default function Header() {
     const t = useTranslations("components.header");
@@ -11,7 +12,10 @@ export default function Header() {
     <header className="text-center pt-6">
       {/* Dark mode toggle */}
       <div className="flex justify-between items-center mb-10 px-4">
-        <HomeButton />
+        <div className="flex items-center gap-4">
+          <HomeButton />
+          <LanguageSelector />
+        </div>
       <ThemeToggle />
       </div>
       {/* Intro */}

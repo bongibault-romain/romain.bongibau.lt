@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import LanguageSelector from "../LanguageSelector";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();

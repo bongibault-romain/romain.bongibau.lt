@@ -1,12 +1,12 @@
 import "./../css/style.css";
 
-import { Inter, Inter_Tight } from "next/font/google";
+import { routing } from "@/i18n/routing";
 import { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { setRequestLocale } from "next-intl/server";
+import { Inter, Inter_Tight } from "next/font/google";
 import { notFound } from "next/navigation";
 import Theme from "../theme-provider";
-import { setRequestLocale } from "next-intl/server";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,8 +75,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${inter.variable} ${inter_tight.variable} font-inter antialiased bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 tracking-tight`}
       >
-        <NextIntlClientProvider>
-          <Theme>
+        <Theme>
+          <NextIntlClientProvider>
             <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
               <div className="max-w-[728px] mx-auto">
                 <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
@@ -86,8 +86,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                 </div>
               </div>
             </div>
-          </Theme>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </Theme>
       </body>
     </html>
   );
