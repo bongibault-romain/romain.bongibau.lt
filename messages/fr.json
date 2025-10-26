@@ -1,10 +1,11 @@
 {
-    "rss": {
-        "title": "Romain Bongibault - Projets",
-        "description": "Découvrez les projets de Romain Bongibault",
-        "generator": "Inconnu",
-        "copyright": "Bongibault Romain, {year}. Tous droits réservés."
-    },
+  "dir": "ltr",
+  "rss": {
+    "title": "Romain Bongibault - Projets",
+    "description": "Découvrez les projets de Romain Bongibault",
+    "generator": "Inconnu",
+    "copyright": "Bongibault Romain, {year}. Tous droits réservés."
+  },
   "home": {
     "metadata": {
       "title": "Bongibault Romain - Portfolio",

@@ -12,14 +12,13 @@ export default function HomeHeader() {
 
   return (
     <header className="text-center pt-6">
-
       <div className="flex justify-between items-center">
-      <LanguageSelector />
+        <LanguageSelector />
 
-      {/* Dark mode toggle */}
-      <ThemeToggle />
+        {/* Dark mode toggle */}
+        <ThemeToggle />
       </div>
-      
+
       {/* Intro */}
       <div className="mb-10">
         <Image

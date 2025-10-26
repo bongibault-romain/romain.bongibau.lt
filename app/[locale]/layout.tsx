@@ -3,7 +3,7 @@ import "./../css/style.css";
 import { routing } from "@/i18n/routing";
 import { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Inter, Inter_Tight } from "next/font/google";
 import { notFound } from "next/navigation";
 import Theme from "../theme-provider";
@@ -69,6 +69,8 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
+  const dir = (await getTranslations())('dir');
+
   return (
     <html lang={locale} suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
@@ -81,7 +83,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               <div className="max-w-[728px] mx-auto">
                 <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
                   <div className="px-3 md:px-16">
-                    <div className="flex flex-col min-h-screen">{children}</div>
+                    <div dir={dir} className="flex flex-col min-h-screen">{children}</div>
                   </div>
                 </div>
               </div>

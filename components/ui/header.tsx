@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import LanguageSelector from "../LanguageSelector";
 
 export default function Header() {
-    const t = useTranslations("components.header");
-  
+  const t = useTranslations("components.header");
+
   return (
     <header className="text-center pt-6">
       {/* Dark mode toggle */}
@@ -16,7 +16,7 @@ export default function Header() {
           <HomeButton />
           <LanguageSelector />
         </div>
-      <ThemeToggle />
+        <ThemeToggle />
       </div>
       {/* Intro */}
       <div>

@@ -8,6 +8,7 @@ import { useState, useRef, useEffect, useTransition } from 'react';
 const languages = {
   en: 'English',
   fr: 'Français',
+  ar: 'العربية',
 };
 
 export default function LanguageSelector() {

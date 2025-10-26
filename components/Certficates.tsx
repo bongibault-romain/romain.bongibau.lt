@@ -11,6 +11,7 @@ const TOEIC = () => (
 
 export default function Certificates() {
   const t = useTranslations("components.certificates");
+  const dir = useTranslations()("dir");
 
   const items = [
     {
@@ -51,7 +52,7 @@ export default function Certificates() {
             className="relative p-5 rounded-xl nth-[3n+1]:bg-linear-to-tr nth-[3n+1]:from-gray-100 nth-[3n+1]:to-gray-50 dark:nth-[3n+1]:bg-linear-to-tr dark:nth-[3n+1]:from-gray-800 dark:nth-[3n+1]:to-gray-800/[0.65] group"
           >
             <div
-              className="absolute top-5 right-7 text-gray-400 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-400 group-hover:rotate-45 transition"
+              className="absolute ltr:top-5 ltr:right-7 rtl:top-5 rtl:left-7 rtl:-rotate-90 text-gray-400 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-400 ltr:group-hover:rotate-45 rtl:group-hover:-rotate-[135deg] transition"
               aria-hidden="true"
             >
               <svg
