@@ -124,7 +124,7 @@ export default function Skills() {
 
             {/* Hover Description */}
             <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <p className="text-xs text-gray-600 dark:text-gray-300 text-left leading-relaxed">
+              <p className="text-xs text-gray-600 dark:text-gray-300 ltr:text-left rtl:text-right leading-relaxed">
                 {skill.description}
               </p>
             </div>
