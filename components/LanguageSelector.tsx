@@ -6,9 +6,10 @@ import { useParams } from 'next/navigation';
 import { useState, useRef, useEffect, useTransition } from 'react';
 
 const languages = {
-  en: 'English',
-  fr: 'Français',
-  ar: 'العربية',
+  en: <span>English</span>,
+  fr: <span>Français</span>,
+  ar: <div dir="rtl">العربية</div>
+  ,
 };
 
 export default function LanguageSelector() {
