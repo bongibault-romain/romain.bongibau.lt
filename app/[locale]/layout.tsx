@@ -1,5 +1,6 @@
 import "./../css/style.css";
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { routing } from "@/i18n/routing";
 import { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -91,6 +92,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </NextIntlClientProvider>
         </Theme>
       </body>
+      <GoogleAnalytics gaId="GTM-KKF6R6G8" />
     </html>
   );
 }
